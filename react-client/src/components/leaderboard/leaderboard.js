@@ -1,5 +1,9 @@
-import React from 'react';
-import './leaderboard.css';
+import React from "react";
+import "./leaderboard.css";
+/*
+Fake table that shows the leaderboard - sample 
+*/
+
 const LeaderBoard = () => {
   return (
     <div className="LeaderBoard">
