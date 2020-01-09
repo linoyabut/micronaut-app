@@ -23,6 +23,7 @@ public class DataLoader implements ApplicationEventListener<ServerStartupEvent> 
     @Override
     public void onApplicationEvent(ServerStartupEvent event) {
         if (repository.count() == 0) {
+            
             Trivia trivia1 = new Trivia("Who is the president of the USA",
                     "Obama|Trump|Lincon", 1);
 
@@ -45,6 +46,10 @@ public class DataLoader implements ApplicationEventListener<ServerStartupEvent> 
 
             repository.save(trivia1);
             repository.save(trivia2);
+            repository.save(trivia3);
+            repository.save(trivia4);
+            repository.save(trivia5);
+            repository.save(trivia6);
         }
     }
 }
