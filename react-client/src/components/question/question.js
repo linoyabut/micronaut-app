@@ -33,7 +33,7 @@ there are changes in the array only and not in the component.
 
   useEffect(() => {
     if (alias) {
-      fetch(`http://localhost:53375/results/users/${alias}`)
+      fetch(`http://localhost:8080/results/users/${alias}`)
         .then(response => response.json())
         .then(data => {
           props.loadAttempts(data);
@@ -73,13 +73,15 @@ the next question is generated and the component re-renders.
       result: isCorrect
     };
 
-    // console.log('payload ', payLoad);
+    
+
+     //console.log('payload ', payLoad);
     // console.log(JSON.stringify(payLoad));
 
     /*
     Posting the user's response to the database 
     */ 
-    fetch('http://localhost:53375/results/', {
+    fetch('http://localhost:8080/results/', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -90,8 +92,11 @@ the next question is generated and the component re-renders.
       .then(data => {
         props.onAttempt(data);
         console.log(data);
-      });
-
+        console.log('returned promise of http post method');
+      }).catch(err => {
+        console.log(err);
+      })
+    
     event.preventDefault();
   };
 
@@ -139,7 +144,7 @@ the next question is generated and the component re-renders.
                 <span>Loading Questions ....</span>
               )}
             </div>
-            <input type="submit" value="Submit" />
+            <input type="submit" value="Submit"/>
             <Remarks answerDetails={answerDetails} />
           </div>
         ) : (

@@ -1,9 +1,10 @@
 ---
+# comment out the port if docker instance is not running
 micronaut:
   application:
     name: trivia
   server:
-    port: -1
+    #port: -1
     cors:
       enabled: true
 
@@ -24,9 +25,10 @@ jpa:
           auto: update
         show_sql: true
 ---
-consul:
-  client:
-    registration:
-      enabled: true
-  defaultZone: "${CONSUL_HOST:localhost}:${CONSUL_PORT:8500}"
+## comment this portion off if docker instance is not running on machine
+#consul:
+#  client:
+#    registration:
+#      enabled: true
+#  defaultZone: "${CONSUL_HOST:localhost}:${CONSUL_PORT:8500}"
 
