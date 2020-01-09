@@ -39,14 +39,14 @@ const randomQuestions = async () => {
   let response = await fetch("http://localhost:8080/questions");
   let data = await response.json();
 
-  console.log(data);
+ // console.log(data);
 
   const newData = {
     ...data,
     choices: data.choices.split("|")
   };
 
-  console.log(newData);
+  //console.log(newData);
   return newData;
 };
 

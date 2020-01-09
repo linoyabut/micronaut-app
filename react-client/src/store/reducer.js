@@ -7,7 +7,7 @@ const initialState = {
 const reducer = (state = initialState, action) => {
   switch (action.type) {
     case actionTypes.ANSWER_QUESTION: {
-      console.log('Action', action);
+     // console.log('Action', action);
       return {
         ...state,
         attemptList: [...state.attemptList, action.payload]

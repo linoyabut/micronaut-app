@@ -2,13 +2,13 @@ import React from 'react';
 import { connect } from 'react-redux';
 import './statistics.css';
 const Statistics = props => {
-  console.log(props);
+ // console.log(props.attemptList);
 
   let renderList = <span>Loading ... </span>;
   if (props.attemptList) {
     renderList = props.attemptList.map((item, index) => {
       return (
-        <tr key={item.id}>
+        <tr key={index}>
           <td>{item.user.name}</td>
           <td>{item.answer}</td>
           <td>{item.result ? 'Correct' : 'InCorrect'}</td>
@@ -40,4 +40,4 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps)(Statistics);
+export default connect(mapStateToProps, null)(Statistics);
