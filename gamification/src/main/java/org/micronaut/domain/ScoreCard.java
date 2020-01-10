@@ -9,6 +9,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
+/*
+Used for displaying the score and the number of attempts (the questions he has answered so far) with the time of getting score and the score he has gotten for each question he answered
+*/
 @Entity
 @Data
 @NoArgsConstructor

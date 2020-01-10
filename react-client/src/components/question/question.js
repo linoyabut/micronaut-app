@@ -99,7 +99,6 @@ the next question is generated and the component re-renders.
     })
       .then(response => response.json()) // => problem causing inability to save data into database
       .then(data => {
-       // props.onAttempt(data);
       }).catch(err => {
         console.log(err);
       })

@@ -6,6 +6,12 @@ import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.ToString;
 
+import javax.persistence.Entity;
+
+/*
+Used for displaying only the score for each user
+*/
+
 @RequiredArgsConstructor
 @Getter
 @ToString
