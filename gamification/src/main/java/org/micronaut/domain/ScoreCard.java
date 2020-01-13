@@ -17,8 +17,6 @@ Used for displaying the score and the number of attempts (the questions he has a
 @NoArgsConstructor
 public class ScoreCard {
 
-    public static final int DEFAULT_SCORE = 10;
-
     @Id
     @GeneratedValue
     @Column(name = "CARD_ID")
@@ -37,11 +35,18 @@ public class ScoreCard {
     private int score;
 
 
-    public ScoreCard(Long cardId, Long userId, Long attemptId, long scoreTimestamp, int score) {
+    public ScoreCard(Long cardId, Long userId, Long attemptId, int score) {
         this.cardId = cardId;
         this.userId = userId;
         this.attemptId = attemptId;
         this.scoreTimestamp = System.currentTimeMillis();
-        this.score = DEFAULT_SCORE;
+        this.score = score;
+    }
+
+    public ScoreCard(Long userId, Long attemptId, int score) {
+        this.userId = userId;
+        this.attemptId = attemptId;
+        this.scoreTimestamp = System.currentTimeMillis();
+        this.score = score;
     }
 }

@@ -1,29 +1,21 @@
 package org.micronaut.domain;
 
-
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.ToString;
 
 
-
 /*
-Used for displaying only the score for each user
+This Pojo gets the relevant data to calculate the score
 */
-
 @RequiredArgsConstructor
 @Getter
 @ToString
 @EqualsAndHashCode
-public class LeaderBoard {
+public class MultiplicationSolved {
 
-    private final Long userId;
-    private final Long totalScore;
-
-    public LeaderBoard() {
-        this(0L, 0L);
-    }
-
-
+    private final long attemptId;
+    private final long userId;
+    private final boolean correct;
 }
