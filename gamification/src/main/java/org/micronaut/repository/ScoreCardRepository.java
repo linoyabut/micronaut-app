@@ -3,14 +3,37 @@ package org.micronaut.repository;
 import io.micronaut.data.annotation.Query;
 import io.micronaut.data.annotation.Repository;
 import io.micronaut.data.repository.CrudRepository;
+import org.micronaut.domain.LeaderBoard;
 import org.micronaut.domain.ScoreCard;
 
+import javax.persistence.EntityManager;
+import java.util.List;
+
 /*
-Basic Crud Operations for Score Card
+Basic Crud Operations for Score Card.
+Finding the sum of the scores to get total score in score column.
 */
 @Repository
-public interface ScoreCardRepository extends CrudRepository<ScoreCard, Long> {
+    public abstract class ScoreCardRepository implements CrudRepository<ScoreCard, Long> {
+
+    private final EntityManager entityManager;
+
+    private final String query = "SELECT s.userId, SUM(s.score) " +
+            "FROM org.micronaut.domain.ScoreCard s " +
+            "GROUP BY s.userId ORDER BY SUM(s.score) DESC";
+
+    public ScoreCardRepository(EntityManager entityManager) {
+        this.entityManager = entityManager;
+    }
 
 
-    public int findSumScoreByUserId(long userId);
+
+    public abstract int findSumScoreByUserId(long userId);
+
+
+
+    public List<Object[]> findAllLeaders() {
+        return entityManager.createQuery(this.query)
+                .getResultList();
+    }
 }

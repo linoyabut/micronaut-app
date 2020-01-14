@@ -8,4 +8,6 @@ public interface GameService {
     List<ScoreCard> getAllScoreCards();
 
     int getTotalScore(Long userId);
+
+    public List<Object[]> getLeaderBoardStats();
 }
