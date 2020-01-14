@@ -6,6 +6,7 @@ import io.micronaut.data.repository.CrudRepository;
 import org.micronaut.domain.LeaderBoard;
 import org.micronaut.domain.ScoreCard;
 
+import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import java.util.List;
 
@@ -28,9 +29,7 @@ Finding the sum of the scores to get total score in score column.
 
 
 
-    public abstract int findSumScoreByUserId(long userId);
-
-
+   // public abstract int findSumScoreByUserId(long userId);
 
     public List<Object[]> findAllLeaders() {
         return entityManager.createQuery(this.query)

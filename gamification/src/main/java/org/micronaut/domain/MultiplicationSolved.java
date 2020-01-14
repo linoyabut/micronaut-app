@@ -1,21 +1,19 @@
 package org.micronaut.domain;
 
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
-import lombok.ToString;
+import lombok.*;
 
 
 /*
 This Pojo gets the relevant data to calculate the score
 */
-@RequiredArgsConstructor
+
+@NoArgsConstructor
 @Getter
 @ToString
 @EqualsAndHashCode
 public class MultiplicationSolved {
 
-    private final long attemptId;
-    private final long userId;
-    private final boolean correct;
+    private long attemptId;
+    private long userId;
+    private boolean correct;
 }

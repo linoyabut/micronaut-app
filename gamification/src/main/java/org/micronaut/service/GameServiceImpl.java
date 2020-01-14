@@ -1,11 +1,14 @@
 package org.micronaut.service;
 
+import net.bytebuddy.dynamic.scaffold.MethodGraph;
 import org.micronaut.domain.LeaderBoard;
 import org.micronaut.domain.ScoreCard;
 import org.micronaut.repository.ScoreCardRepository;
 
+import javax.inject.Inject;
 import javax.inject.Singleton;
 import javax.transaction.Transactional;
+import java.util.LinkedList;
 import java.util.List;
 /*
 Service layer for Score-Card
@@ -13,27 +16,33 @@ Service layer for Score-Card
 @Singleton
 public class GameServiceImpl implements GameService {
 
+    @Inject
     private ScoreCardRepository scoreCardRepository;
-
-
-
-    public GameServiceImpl(ScoreCardRepository scoreCardRepository) {
-        this.scoreCardRepository = scoreCardRepository;
-    }
 
     @Override
     public List<ScoreCard> getAllScoreCards() {
        return (List)scoreCardRepository.findAll();
     }
 
-    @Override
-    public int getTotalScore(Long userId) {
-       return scoreCardRepository.findSumScoreByUserId(userId);
-    }
-
+    /*
+    * Mapping the Object [], returned from database with userid and score to leaderboard obj
+    **/
     @Override
     @Transactional
-    public List<Object[]> getLeaderBoardStats() {
-        return scoreCardRepository.findAllLeaders();
+    public List<LeaderBoard> getAllLeaderBoardStats() {
+        List<Object[]> leaderBoardResults = scoreCardRepository.findAllLeaders();
+
+        List<LeaderBoard> leaderBoardList = new LinkedList<>();
+
+        for(Object[] obj : leaderBoardResults) {
+            Long userId = (Long) obj[0];
+            Long totalScore = (Long) obj[1];
+            LeaderBoard leaderBoard = new LeaderBoard(userId, totalScore);
+            leaderBoardList.add(leaderBoard);
+        }
+
+        return leaderBoardList;
     }
+
+
 }
