@@ -122,7 +122,7 @@ the next question is generated and the component re-renders.
     <div className="Question">
       <form onSubmit={handleAnswer}>
         <div className="User">
-          <label>Name:</label>
+          <label>Username</label>
           <input
             type="text"
             name="name"

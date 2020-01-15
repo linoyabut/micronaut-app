@@ -5,30 +5,37 @@ const Statistics = props => {
  // console.log(props.attemptList);
 
   let renderList = <span>Loading ... </span>;
-  if (props.attemptList) {
-    renderList = props.attemptList.map((item, index) => {
-      return (
-        <tr key={index}>
-          <td>{item.user.name}</td>
-          <td>{item.answer}</td>
-          <td>{item.result ? 'Correct' : 'InCorrect'}</td>
-        </tr>
-      );
-    });
-  }
+  // if (!props.attemptList) {
+  //   renderList = props.attemptList.map((item, index) => {
+  //     return (
+  //       <tr key={index}>
+  //         <td>{item.user.name}</td>
+  //         <td>{item.answer}</td>
+  //         <td>{item.result ? 'Correct' : 'InCorrect'}</td>
+  //       </tr>
+  //     );
+  //   });
+  // }
+ 
 
   return (
     <div className="Statistics">
-      <h1>Attempt Statistics </h1>
+      <h1>Game Stats </h1>
       <table>
         <thead>
           <tr>
-            <th>Name/Alias</th>
-            <th>Answered</th>
-            <th>Result</th>
+            <th style = {{width: '8%'}}>Username</th>
+            <th style = {{width: '11%'}}>Total Score</th>
+            <th style = {{width: '11%'}}>Badge</th>
           </tr>
         </thead>
-        <tbody>{renderList}</tbody>
+        <tbody>
+          <tr>
+          <td style = {{width: '8%'}}>John</td>
+          <td style = {{width: '11%'}}>50</td>
+          <td style = {{width: '8%'}}>Silver</td>
+          </tr>
+        </tbody>
       </table>
     </div>
   );
