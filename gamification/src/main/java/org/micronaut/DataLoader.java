@@ -31,21 +31,21 @@ public class DataLoader implements ApplicationEventListener<ServerStartupEvent> 
 
             ScoreCard scoreCard1 = new ScoreCard( 1l, 2l, 10);
 
-            ScoreCard scoreCard2 = new ScoreCard(1l, 3l, 10);
+            ScoreCard scoreCard2 = new ScoreCard(1l, 3l, 0);
 
-            ScoreCard scoreCard3 =  new ScoreCard( 1l, 4l, 10);
+            ScoreCard scoreCard3 =  new ScoreCard( 1l, 4l, 0);
 
             ScoreCard scoreCard4 =  new ScoreCard( 1l, 5l, 0);
 
-            ScoreCard scoreCard5 =  new ScoreCard( 1l, 6l, 10);
+            ScoreCard scoreCard5 =  new ScoreCard( 2l, 6l, 10);
 
-            ScoreCard scoreCard6 =  new ScoreCard( 1l, 7l, 10);
+            ScoreCard scoreCard6 =  new ScoreCard( 2l, 7l, 10);
 
-            ScoreCard scoreCard7 =  new ScoreCard( 1l, 8l, 10);
+            ScoreCard scoreCard7 =  new ScoreCard( 2l, 8l, 10);
 
-            ScoreCard scoreCard8 =  new ScoreCard( 1l, 9l, 10);
+            ScoreCard scoreCard8 =  new ScoreCard( 2l, 9l, 10);
 
-            ScoreCard scoreCard9 =  new ScoreCard( 1l, 10l, 0);
+            ScoreCard scoreCard9 =  new ScoreCard( 2l, 10l, 10);
 
             scoreCardRepository.save(scoreCard);
             scoreCardRepository.save(scoreCard1);

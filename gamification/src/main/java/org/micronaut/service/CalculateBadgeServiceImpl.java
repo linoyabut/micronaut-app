@@ -21,6 +21,10 @@ public class CalculateBadgeServiceImpl implements CalculateBadgeService {
 
         double scorePercentage = ((totalScoreUser * 100) / (totalAttemptUser * 10));
 
+        System.out.println(scorePercentage);
+        System.out.println(totalScoreUser);
+        System.out.println(totalAttemptUser);
+
         Badge badge = BadgeType(scorePercentage);
 
         GameStats gameStats = new GameStats();
@@ -33,11 +37,14 @@ public class CalculateBadgeServiceImpl implements CalculateBadgeService {
 
     @Override
     public Badge BadgeType(double scorePercentage) {
-        if(scorePercentage < 40)
-            return Badge.BRONZE;
-        else if(scorePercentage < 80 && scorePercentage > 40)
-            return Badge.SILVER;
-        else
+        if(scorePercentage > 80) {
             return Badge.GOLD;
+        }
+        else if(scorePercentage <= 80 && scorePercentage >= 40) {
+            return Badge.SILVER;
+        }
+        else {
+            return Badge.BRONZE;
+        }
     }
 }
