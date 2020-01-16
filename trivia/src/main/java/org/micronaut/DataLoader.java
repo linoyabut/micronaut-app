@@ -59,6 +59,7 @@ public class DataLoader implements ApplicationEventListener<ServerStartupEvent> 
             repository.save(trivia4);
             repository.save(trivia5);
             repository.save(trivia6);
+
         }
     }
 }

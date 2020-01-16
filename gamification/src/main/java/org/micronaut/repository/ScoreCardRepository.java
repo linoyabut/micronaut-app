@@ -28,8 +28,11 @@ Finding the sum of the scores to get total score in score column.
     }
 
 
+    // get total score of 1 user
+     public abstract int findSumScoreByUserId(long userId);
 
-   // public abstract int findSumScoreByUserId(long userId);
+    // get total count of attempts for 1 user
+    public abstract int countByUserId(long userId);
 
     public List<Object[]> findAllLeaders() {
         return entityManager.createQuery(this.query)

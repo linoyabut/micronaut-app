@@ -4,14 +4,19 @@ import io.micronaut.data.annotation.Repository;
 import io.micronaut.data.repository.CrudRepository;
 import org.micronaut.domain.BadgeCard;
 
+import javax.persistence.EntityManager;
 import java.util.List;
 
 /*
-Retrieves all the badgecards in the database for display, sorted with the most recent badgecard
-*/
+CRUD operations for BatchCard
+ */
 @Repository
-public interface BadgeCardRepository extends CrudRepository<BadgeCard, Long> {
+public interface  BadgeCardRepository extends CrudRepository<BadgeCard, Long> {
 
-    //ist<BadgeCard> findByUserIdOrderByBadgeTimestampDesc(final long userId);
+    /*
+Retrieves all the badgecards in the database for display based on the userId
+    */
+    public List<BadgeCard> findByUserId(Long userId);
+
 
 }

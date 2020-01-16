@@ -25,16 +25,15 @@ public class BadgeCard {
     private  Long badgeId;
 
     private  Long userId;
-    private  long badgeTimestamp;
     private  Badge badge;
 
 
     public BadgeCard() {
-        this(null, null, 0, null);
+        this(null, null);
     }
 
     public BadgeCard(final Long userId, final Badge badge) {
-        this(null, userId, System.currentTimeMillis(), badge);
+        this(null, userId, badge);
     }
 
 }

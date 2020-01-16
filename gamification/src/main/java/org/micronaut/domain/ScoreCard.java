@@ -25,6 +25,7 @@ public class ScoreCard {
     @Column(name = "USER_ID")
     private Long userId;
 
+    //Question id
     @Column(name = "ATTEMPT_ID")
     private Long attemptId;
 

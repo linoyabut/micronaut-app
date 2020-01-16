@@ -1,10 +1,7 @@
 package org.micronaut.domain;
 
 
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
-import lombok.ToString;
+import lombok.*;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -21,22 +18,14 @@ Total score user has attained so far in the game. Domain used for displaying dat
 
 @RequiredArgsConstructor
 @Getter
+@Setter
 @ToString
 @EqualsAndHashCode
 public class GameStats {
 
+    private  Long userId;
+    private  int score;
+    private  Badge badge;
 
-    private final Long userId;
-    private final int score;
-    private Badge badge;
 
-
-    public GameStats() {
-        this.userId = 0L;
-        this.score = 0;
-    }
-
-    public static GameStats emptyStats(final Long userId) {
-        return new GameStats(userId, 0);
-    }
 }

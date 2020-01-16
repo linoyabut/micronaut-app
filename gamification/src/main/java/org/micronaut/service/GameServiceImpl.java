@@ -1,6 +1,5 @@
 package org.micronaut.service;
 
-import net.bytebuddy.dynamic.scaffold.MethodGraph;
 import org.micronaut.domain.LeaderBoard;
 import org.micronaut.domain.ScoreCard;
 import org.micronaut.repository.ScoreCardRepository;
@@ -43,6 +42,5 @@ public class GameServiceImpl implements GameService {
 
         return leaderBoardList;
     }
-
 
 }

@@ -6,7 +6,6 @@ import io.micronaut.http.annotation.Controller;
 import io.micronaut.http.annotation.Post;
 import io.micronaut.validation.Validated;
 import org.micronaut.domain.MultiplicationSolved;
-import org.micronaut.service.GameService;
 import org.micronaut.service.ResultService;
 
 import javax.inject.Inject;
