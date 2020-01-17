@@ -4,6 +4,7 @@ import io.micronaut.http.HttpStatus;
 import io.micronaut.http.MediaType;
 import io.micronaut.http.annotation.*;
 import io.micronaut.validation.Validated;
+import org.micronaut.domain.Response;
 import org.micronaut.domain.ResultAttempt;
 import org.micronaut.service.TriviaResultService;
 
@@ -23,11 +24,11 @@ public class TriviaResultController {
     }
 
     @Post
-    public HttpStatus save(@Body ResultAttempt resultAttempt) {
+    public HttpStatus save(@Body Response response) {
 
-        ResultAttempt result = triviaResultService.postTriviaResults(resultAttempt);
+       // ResultAttempt result = triviaResultService.postTriviaResults(resultAttempt);
         System.out.println(result.getUser().getId());
-        gamificationClient.save(result.getUser().getId(), result.getUser().getId() , result.isResult());
+        gamificationClient.save(,  , );
         return HttpStatus.CREATED;
     }
 

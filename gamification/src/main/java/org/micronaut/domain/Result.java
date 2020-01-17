@@ -21,5 +21,4 @@ public class Result {
     private long userId;
     private long attemptId;
     private Boolean isCorrect;
-
 }

@@ -1,5 +1,6 @@
 package org.micronaut.service;
 
+import org.micronaut.domain.Response;
 import org.micronaut.domain.ResultAttempt;
 import org.micronaut.repository.TriviaResultRepository;
 
@@ -24,6 +25,12 @@ public class TriviaResultServiceImpl implements TriviaResultService {
     @Override
     public List<ResultAttempt> getResults(String name) {
         return triviaResultRepository.findByUserName(name);
+    }
+
+    @Override
+    public ResultAttempt getResultAttempt(Response response) {
+
+
     }
 
 
