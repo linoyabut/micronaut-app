@@ -21,10 +21,6 @@ public class CalculateBadgeServiceImpl implements CalculateBadgeService {
 
         double scorePercentage = ((totalScoreUser * 100) / (totalAttemptUser * 10));
 
-        System.out.println(scorePercentage);
-        System.out.println(totalScoreUser);
-        System.out.println(totalAttemptUser);
-
         Badge badge = BadgeType(scorePercentage);
 
         GameStats gameStats = new GameStats();

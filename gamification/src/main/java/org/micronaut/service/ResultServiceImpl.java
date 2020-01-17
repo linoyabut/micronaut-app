@@ -1,6 +1,6 @@
 package org.micronaut.service;
 
-import org.micronaut.domain.MultiplicationSolved;
+import org.micronaut.domain.Result;
 import org.micronaut.domain.ScoreCard;
 import org.micronaut.repository.ScoreCardRepository;
 
@@ -13,12 +13,12 @@ public class ResultServiceImpl implements ResultService {
 
 
     @Override
-    public void createScoreCard(MultiplicationSolved multiplicationSolved) {
+    public void createScoreCard(Result result) {
         try {
             ScoreCard scoreCard = new ScoreCard();
-            scoreCard.setAttemptId(multiplicationSolved.getAttemptId());
-            scoreCard.setUserId(multiplicationSolved.getUserId());
-            int score = calculateScore(multiplicationSolved.isCorrect());
+            scoreCard.setAttemptId(result.getAttemptId());
+            scoreCard.setUserId(result.getUserId());
+            int score = calculateScore(result.getIsCorrect());
             scoreCard.setScore(score);
             scoreCardRepository.save(scoreCard);
         } catch (Exception e) {
@@ -28,7 +28,7 @@ public class ResultServiceImpl implements ResultService {
 
     @Override
     public int calculateScore(boolean correct) {
-        return correct ? 10 : 0;
+        return correct == true ? 10 : 0;
     }
 
 }

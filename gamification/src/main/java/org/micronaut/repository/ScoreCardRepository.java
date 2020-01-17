@@ -8,6 +8,7 @@ import org.micronaut.domain.ScoreCard;
 
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
+import javax.transaction.Transactional;
 import java.util.List;
 
 /*
@@ -34,6 +35,7 @@ Finding the sum of the scores to get total score in score column.
     // get total count of attempts for 1 user
     public abstract int countByUserId(long userId);
 
+    @Transactional
     public List<Object[]> findAllLeaders() {
         return entityManager.createQuery(this.query)
                 .getResultList();

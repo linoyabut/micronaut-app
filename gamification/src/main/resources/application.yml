@@ -3,7 +3,7 @@ micronaut:
   application:
     name: gamification
   server:
-      #port: -1
+    port: 5000
     cors:
       enabled: true
 

@@ -4,6 +4,7 @@ import org.micronaut.domain.Trivia;
 import org.micronaut.repository.TriviaRepository;
 
 import javax.inject.Singleton;
+import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 

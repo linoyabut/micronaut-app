@@ -27,7 +27,6 @@ public class GameServiceImpl implements GameService {
     * Mapping the Object [], returned from database with userid and score to leaderboard obj
     **/
     @Override
-    @Transactional
     public List<LeaderBoard> getAllLeaderBoardStats() {
         List<Object[]> leaderBoardResults = scoreCardRepository.findAllLeaders();
 

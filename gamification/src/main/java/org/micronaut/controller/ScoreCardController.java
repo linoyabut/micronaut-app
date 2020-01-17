@@ -1,5 +1,7 @@
 package org.micronaut.controller;
 
+import io.micronaut.http.HttpResponse;
+import io.micronaut.http.HttpStatus;
 import io.micronaut.http.MediaType;
 import io.micronaut.http.annotation.Controller;
 import io.micronaut.http.annotation.Get;
@@ -12,6 +14,7 @@ import org.micronaut.service.CalculateBadgeService;
 import org.micronaut.service.GameService;
 
 import javax.inject.Inject;
+import java.net.URISyntaxException;
 import java.util.List;
 
 @Controller("/scorecard")
@@ -34,11 +37,12 @@ public class ScoreCardController {
     @Get(value = "/leaderboard",produces = MediaType.APPLICATION_JSON)
     public List<LeaderBoard> leaderBoardScores(){
         return gameService.getAllLeaderBoardStats();
-    }
+}
 
-    @Get(value = "/gamestats/{userId}",produces = MediaType.APPLICATION_JSON)
-    public GameStats gameStatsUser(Long userId){
-        return calculateBadgeService.computeBatch(userId);
+    @Get(value = "/gamestats/{userId}", produces = MediaType.APPLICATION_JSON)
+    public HttpResponse<GameStats> gameStatsUser(@PathVariable Long userId){
+            GameStats gameStats = calculateBadgeService.computeBatch(userId);
+            return HttpResponse.ok(gameStats);
     }
 
 
