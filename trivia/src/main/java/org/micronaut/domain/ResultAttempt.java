@@ -24,13 +24,15 @@ public class ResultAttempt {
 
     private String answer;
 
-    private boolean result;
+    private long attemptId;
 
-    public ResultAttempt(User user, String question, String answer, boolean result) {
+    private boolean isCorrect;
+
+    public ResultAttempt(User user, String question, String answer, long attemptId, boolean isCorrect) {
         this.user = user;
         this.question = question;
         this.answer = answer;
-        this.result = result;
+        this.attemptId = attemptId;
+        this.isCorrect = isCorrect;
     }
-
 }

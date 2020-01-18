@@ -20,5 +20,11 @@ public class Response {
 
     private String question;
 
-    private int answer;
+    private String choices;
+
+    private String answer;
+
+    private long attemptId;
+
+    private int correctAnswer;
 }

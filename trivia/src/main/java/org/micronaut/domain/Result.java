@@ -18,5 +18,5 @@ public class Result {
 
     private long attemptId;
 
-    private Boolean isCorrect;
+    private boolean isCorrect;
 }

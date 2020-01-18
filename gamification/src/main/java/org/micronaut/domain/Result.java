@@ -20,5 +20,5 @@ This Pojo gets the relevant data to calculate the score
 public class Result {
     private long userId;
     private long attemptId;
-    private Boolean isCorrect;
+    private boolean isCorrect;
 }

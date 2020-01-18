@@ -26,13 +26,4 @@ public class TriviaResultServiceImpl implements TriviaResultService {
     public List<ResultAttempt> getResults(String name) {
         return triviaResultRepository.findByUserName(name);
     }
-
-    @Override
-    public ResultAttempt getResultAttempt(Response response) {
-
-
-    }
-
-
-
 }

@@ -18,7 +18,7 @@ public class ResultServiceImpl implements ResultService {
             ScoreCard scoreCard = new ScoreCard();
             scoreCard.setAttemptId(result.getAttemptId());
             scoreCard.setUserId(result.getUserId());
-            int score = calculateScore(result.getIsCorrect());
+            int score = calculateScore(result.isCorrect());
             scoreCard.setScore(score);
             scoreCardRepository.save(scoreCard);
         } catch (Exception e) {

@@ -6,6 +6,7 @@ import io.micronaut.http.annotation.*;
 import io.micronaut.validation.Validated;
 import org.micronaut.domain.Response;
 import org.micronaut.domain.ResultAttempt;
+import org.micronaut.service.TriviaResponseChecker;
 import org.micronaut.service.TriviaResultService;
 
 import java.util.List;
@@ -18,17 +19,26 @@ public class TriviaResultController {
 
     private GamificationClient gamificationClient;
 
-    public TriviaResultController(TriviaResultService triviaResultService, GamificationClient gamificationClient) {
+    private TriviaResponseChecker triviaResponseChecker;
+
+    public TriviaResultController(TriviaResultService triviaResultService, GamificationClient gamificationClient, TriviaResponseChecker triviaResponseChecker) {
         this.triviaResultService = triviaResultService;
         this.gamificationClient = gamificationClient;
+        this.triviaResponseChecker = triviaResponseChecker;
     }
 
-    @Post
+    @Post(consumes = MediaType.APPLICATION_JSON, produces = MediaType.APPLICATION_JSON)
     public HttpStatus save(@Body Response response) {
+        boolean isCorrect = triviaResponseChecker.checkResponse(response);
 
-       // ResultAttempt result = triviaResultService.postTriviaResults(resultAttempt);
-        System.out.println(result.getUser().getId());
-        gamificationClient.save(,  , );
+        ResultAttempt resultAttempt = new ResultAttempt(
+        response.getUser(), response.getQuestion(), response.getAnswer(),
+                response.getAttemptId(), isCorrect
+        );
+
+        ResultAttempt result = triviaResultService.postTriviaResults(resultAttempt);
+
+        gamificationClient.save(result.getUser().getId(), result.getAttemptId(), result.isCorrect());
         return HttpStatus.CREATED;
     }
 

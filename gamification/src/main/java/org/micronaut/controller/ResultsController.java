@@ -27,7 +27,8 @@ public class ResultsController {
     @Post(consumes = MediaType.APPLICATION_JSON)
     public HttpStatus save(@Body Result result) {
         try {
-            System.out.println("multiplication here: "+ result.getUserId());
+            System.out.println("multiplication here: "+ result.getUserId() + " " + result.getAttemptId()
+            + " " + result.isCorrect());
             resultService.createScoreCard(result);
             return HttpStatus.CREATED;
         } catch (Exception e) {
