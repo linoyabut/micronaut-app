@@ -12,7 +12,7 @@ import java.io.Serializable;
 This Pojo gets the relevant data to calculate the score
 */
 
-@NoArgsConstructor
+@AllArgsConstructor
 @ToString
 @EqualsAndHashCode
 @Getter

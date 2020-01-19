@@ -29,16 +29,16 @@ public class TriviaResultController {
 
     @Post(consumes = MediaType.APPLICATION_JSON, produces = MediaType.APPLICATION_JSON)
     public HttpStatus save(@Body Response response) {
-        boolean isCorrect = triviaResponseChecker.checkResponse(response);
+        byte isCorrect = triviaResponseChecker.checkResponse(response);
 
         ResultAttempt resultAttempt = new ResultAttempt(
         response.getUser(), response.getQuestion(), response.getAnswer(),
-                response.getAttemptId(), isCorrect
+                response.getAttemptId(), isCorrect == 1 ? true: false
         );
 
         ResultAttempt result = triviaResultService.postTriviaResults(resultAttempt);
 
-        gamificationClient.save(result.getUser().getId(), result.getAttemptId(), result.isCorrect());
+        gamificationClient.save(result.getUser().getId(), result.getAttemptId(), isCorrect);
         return HttpStatus.CREATED;
     }
 

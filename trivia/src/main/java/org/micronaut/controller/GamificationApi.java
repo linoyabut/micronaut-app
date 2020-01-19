@@ -7,5 +7,5 @@ import org.micronaut.domain.Result;
 public interface GamificationApi {
 
     @Post
-    Result save(long userId, long attemptId, boolean isCorrect);
+    Result save(long userId, long attemptId, byte isCorrect);
 }
