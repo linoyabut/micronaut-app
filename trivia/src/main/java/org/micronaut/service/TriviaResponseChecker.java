@@ -4,5 +4,5 @@ import org.micronaut.domain.Response;
 
 public interface TriviaResponseChecker {
     // check if user's answer is correct
-    byte checkResponse (Response response);
+    int checkResponse (Response response);
 }

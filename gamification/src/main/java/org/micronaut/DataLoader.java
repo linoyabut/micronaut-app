@@ -27,25 +27,25 @@ public class DataLoader implements ApplicationEventListener<ServerStartupEvent> 
         Seeding the ScoreCard table so that can test the repo to see if getting scores possible
         */
         if(scoreCardRepository.count() == 0) {
-            ScoreCard scoreCard = new ScoreCard( 1l, 1l, 10);
+            ScoreCard scoreCard = new ScoreCard( 1l, 1, 10);
 
-            ScoreCard scoreCard1 = new ScoreCard( 1l, 2l, 10);
+            ScoreCard scoreCard1 = new ScoreCard( 1l, 2, 10);
 
-            ScoreCard scoreCard2 = new ScoreCard(1l, 3l, 0);
+            ScoreCard scoreCard2 = new ScoreCard(1l, 3, 0);
 
-            ScoreCard scoreCard3 =  new ScoreCard( 1l, 4l, 0);
+            ScoreCard scoreCard3 =  new ScoreCard( 1l, 4, 0);
 
-            ScoreCard scoreCard4 =  new ScoreCard( 1l, 5l, 0);
+            ScoreCard scoreCard4 =  new ScoreCard( 1l, 5, 0);
 
-            ScoreCard scoreCard5 =  new ScoreCard( 2l, 6l, 10);
+            ScoreCard scoreCard5 =  new ScoreCard( 2l, 6, 10);
 
-            ScoreCard scoreCard6 =  new ScoreCard( 2l, 7l, 10);
+            ScoreCard scoreCard6 =  new ScoreCard( 2l, 7, 10);
 
-            ScoreCard scoreCard7 =  new ScoreCard( 2l, 8l, 10);
+            ScoreCard scoreCard7 =  new ScoreCard( 2l, 8, 10);
 
-            ScoreCard scoreCard8 =  new ScoreCard( 2l, 9l, 10);
+            ScoreCard scoreCard8 =  new ScoreCard( 2l, 9, 10);
 
-            ScoreCard scoreCard9 =  new ScoreCard( 2l, 10l, 10);
+            ScoreCard scoreCard9 =  new ScoreCard( 2l, 10, 10);
 
             scoreCardRepository.save(scoreCard);
             scoreCardRepository.save(scoreCard1);

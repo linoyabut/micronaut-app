@@ -13,6 +13,6 @@ import lombok.ToString;
 @Introspected
 public class ResultTrivia {
     private long userId;
-    private long attemptId;
-    private byte isCorrect;
+    private int attemptId;
+    private int isCorrect;
 }

@@ -24,7 +24,5 @@ public class Response {
 
     private String answer;
 
-    private long attemptId;
-
     private int correctAnswer;
 }

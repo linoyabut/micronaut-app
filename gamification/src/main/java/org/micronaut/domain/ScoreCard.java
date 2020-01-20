@@ -27,7 +27,7 @@ public class ScoreCard {
 
     //Question id
     @Column(name = "ATTEMPT_ID")
-    private Long attemptId;
+    private int attemptId;
 
     @Column(name = "SCORE_TS")
     private long scoreTimestamp;
@@ -36,7 +36,7 @@ public class ScoreCard {
     private int score;
 
 
-    public ScoreCard(Long cardId, Long userId, Long attemptId, int score) {
+    public ScoreCard(Long cardId, Long userId, int attemptId, int score) {
         this.cardId = cardId;
         this.userId = userId;
         this.attemptId = attemptId;
@@ -44,7 +44,7 @@ public class ScoreCard {
         this.score = score;
     }
 
-    public ScoreCard(Long userId, Long attemptId, int score) {
+    public ScoreCard(Long userId, int attemptId, int score) {
         this.userId = userId;
         this.attemptId = attemptId;
         this.scoreTimestamp = System.currentTimeMillis();

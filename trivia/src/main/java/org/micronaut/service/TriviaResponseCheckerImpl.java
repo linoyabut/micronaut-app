@@ -9,7 +9,7 @@ public class TriviaResponseCheckerImpl implements TriviaResponseChecker {
 
     // check if user's answer is correct
     @Override
-    public byte checkResponse(Response response) {
+    public int checkResponse(Response response) {
         String [] choiceArray = response.getChoices().split("\\|");
      /*   System.out.println(choiceArray[response.getCorrectAnswer()] + " correct ans");
         System.out.println(response.getAnswer() + " user input");*/

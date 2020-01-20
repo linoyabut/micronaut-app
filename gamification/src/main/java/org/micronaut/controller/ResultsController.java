@@ -1,5 +1,6 @@
 package org.micronaut.controller;
 
+import io.micronaut.http.HttpResponse;
 import io.micronaut.http.HttpStatus;
 import io.micronaut.http.MediaType;
 import io.micronaut.http.annotation.Body;
@@ -26,20 +27,20 @@ public class ResultsController {
 
 
     @Post(consumes = MediaType.APPLICATION_JSON)
-    public HttpStatus save(@Body ResultTrivia resultTrivia) {
+    public HttpResponse<Result> save(@Body ResultTrivia resultTrivia) {
         try {
           /*  System.out.println("multiplication here: "+ resultTrivia.getUserId() + " " + resultTrivia.getAttemptId()
             + " " + resultTrivia.getIsCorrect());*/
             Result result = new Result(
                     resultTrivia.getUserId(), resultTrivia.getAttemptId(),
-                    resultTrivia.getIsCorrect() == 1 ? true : false
+                   resultTrivia.getIsCorrect() == 1 ? true: false
             );
 
             System.out.println(result);
             resultService.createScoreCard(result);
-            return HttpStatus.CREATED;
+            return HttpResponse.ok(result);
         } catch (Exception e) {
-            return HttpStatus.NOT_IMPLEMENTED;
+            return HttpResponse.badRequest();
         }
     }
 }

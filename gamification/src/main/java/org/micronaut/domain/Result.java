@@ -19,6 +19,6 @@ This Pojo gets the relevant data to calculate the score
 @Introspected
 public class Result {
     private long userId;
-    private long attemptId;
+    private int attemptId;
     private boolean isCorrect;
 }
