@@ -2,6 +2,7 @@ package org.micronaut.service;
 
 import org.micronaut.domain.Response;
 import org.micronaut.domain.ResultAttempt;
+import org.micronaut.domain.ResultAttemptDTO;
 import org.micronaut.repository.TriviaResultRepository;
 
 import javax.inject.Singleton;
@@ -13,8 +14,12 @@ public class TriviaResultServiceImpl implements TriviaResultService {
 
     private TriviaResultRepository triviaResultRepository;
 
-    public TriviaResultServiceImpl(TriviaResultRepository triviaResultRepository) {
+    private TriviaDateFormatter triviaDateFormatter;
+
+    public TriviaResultServiceImpl(TriviaResultRepository triviaResultRepository
+    , TriviaDateFormatter triviaDateFormatter) {
         this.triviaResultRepository = triviaResultRepository;
+        this.triviaDateFormatter = triviaDateFormatter;
     }
 
     @Override
@@ -23,7 +28,16 @@ public class TriviaResultServiceImpl implements TriviaResultService {
     }
 
     @Override
-    public List<ResultAttempt> getResults(String name) {
-        return triviaResultRepository.findByUserName(name);
+    public ResultAttemptDTO getResults(String name) {
+
+        ResultAttempt resultAttempt =  triviaResultRepository.findByUserName(name);
+
+        String date = triviaDateFormatter.dateFormat(resultAttempt.getLocalDateTime());
+
+        ResultAttemptDTO resultAttemptDTO = new ResultAttemptDTO(
+            date, resultAttempt.getQuestion(), resultAttempt.getAnswer(), resultAttempt.isCorrect()
+        );
+
+        return resultAttemptDTO;
     }
 }

@@ -16,7 +16,7 @@ public class Result {
 
     private long userId;
 
-    private long attemptId;
+    private int attemptId;
 
-    private boolean isCorrect;
+    private int isCorrect;
 }
