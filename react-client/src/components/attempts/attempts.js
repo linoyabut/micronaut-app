@@ -1,35 +1,38 @@
 import React from "react";
 import { connect } from "react-redux";
-import "./statistics.css";
-const Statistics = props => {
-  // console.log(props.attemptList);
+import "./attempts.css";
+const Attempts = (props) => {
 
   let renderList = <span>Loading ... </span>;
-  if (!props.attemptList) {
+  if (props.attemptList) {
+    
     renderList = props.attemptList.map((item, index) => {
       return (
         <tr key={index}>
           <td>{item.localDateTime}</td>
           <td>{item.question}</td>
           <td>{item.answer}</td>
-          <td>{item.correctAnswer}</td>
+          <td>{item.isCorrect}</td>
         </tr>
       );
     });
   }
 
   return (
-    <div className="Statistics">
-      <h1>Game Stats </h1>
+    <div className="MedalTally">
+      <h1>Attempts</h1>
       <table>
-        <thead>
+        <thead style = {{width: '50%'}}>
           <tr>
-            <th style={{ width: "8%" }}>Username</th>
-            <th style={{ width: "11%" }}>Total Score</th>
-            <th style={{ width: "11%" }}>Badge</th>
+            <th style = {{width: '30%'}}>Date</th>
+            <th>Question</th>
+            <th>Answer</th>
+            <th>Correct</th>
           </tr>
         </thead>
-        <tbody>{renderList}</tbody>
+        <tbody>
+         {renderList}
+        </tbody>
       </table>
     </div>
   );
@@ -41,4 +44,4 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps, null)(Statistics);
+export default connect(mapStateToProps, null)(Attempts);

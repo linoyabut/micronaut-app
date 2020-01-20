@@ -28,16 +28,10 @@ public class TriviaResultServiceImpl implements TriviaResultService {
     }
 
     @Override
-    public ResultAttemptDTO getResults(String name) {
+    public List<ResultAttemptDTO> getResults(String name) {
 
-        ResultAttempt resultAttempt =  triviaResultRepository.findByUserName(name);
+        List<ResultAttempt> resultAttempts =  triviaResultRepository.findByUserName(name);
 
-        String date = triviaDateFormatter.dateFormat(resultAttempt.getLocalDateTime());
-
-        ResultAttemptDTO resultAttemptDTO = new ResultAttemptDTO(
-            date, resultAttempt.getQuestion(), resultAttempt.getAnswer(), resultAttempt.isCorrect()
-        );
-
-        return resultAttemptDTO;
+       return triviaDateFormatter.resultAttemptDTOList(resultAttempts);
     }
 }

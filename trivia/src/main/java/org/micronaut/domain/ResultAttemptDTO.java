@@ -19,7 +19,6 @@ public class ResultAttemptDTO {
 
     private String answer;
 
-    private boolean isCorrect;
-
+    private String isCorrect;
 
 }

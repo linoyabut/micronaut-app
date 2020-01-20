@@ -9,6 +9,6 @@ import java.util.List;
 @Repository
 public interface TriviaResultRepository extends CrudRepository<ResultAttempt, Long> {
 
-    ResultAttempt findByUserName(String userName);
+    List<ResultAttempt> findByUserName(String userName);
 
 }

@@ -10,18 +10,13 @@ import lombok.*;
 Used for displaying only the score for each user
 */
 
-@RequiredArgsConstructor
+@AllArgsConstructor
 @Getter
 @ToString
 @EqualsAndHashCode
 public class LeaderBoard {
 
-    private final Long userId;
-    private final Long totalScore;
-
-    public LeaderBoard() {
-        this(0L, 0L);
-    }
-
+    private String userId;
+    private String totalScore;
 
 }

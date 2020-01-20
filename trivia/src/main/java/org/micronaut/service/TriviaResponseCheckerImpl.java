@@ -11,8 +11,6 @@ public class TriviaResponseCheckerImpl implements TriviaResponseChecker {
     @Override
     public int checkResponse(Response response) {
         String [] choiceArray = response.getChoices().split("\\|");
-     /*   System.out.println(choiceArray[response.getCorrectAnswer()] + " correct ans");
-        System.out.println(response.getAnswer() + " user input");*/
         if (choiceArray[response.getCorrectAnswer()].equals(response.getAnswer())) {
             return 1;
         } else

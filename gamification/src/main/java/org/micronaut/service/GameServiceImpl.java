@@ -35,7 +35,9 @@ public class GameServiceImpl implements GameService {
         for(Object[] obj : leaderBoardResults) {
             Long userId = (Long) obj[0];
             Long totalScore = (Long) obj[1];
-            LeaderBoard leaderBoard = new LeaderBoard(userId, totalScore);
+            String uId = String.valueOf(userId);
+            String ttlScore = String.valueOf(totalScore);
+            LeaderBoard leaderBoard = new LeaderBoard(uId, ttlScore);
             leaderBoardList.add(leaderBoard);
         }
 

@@ -34,7 +34,6 @@
 /*
 getting the random questions and choices from the back-end 
 */
-
 const randomQuestions = async () => {
   let response = await fetch("http://localhost:8080/questions");
   let data = await response.json();

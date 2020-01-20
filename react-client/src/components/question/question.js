@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './question.css';
-import randomQuestion from '../../utils/randomQuestion';
+import {randomQuestion, postResult, getUserResponse} from '../../utils/service';
 import Remarks from '../remarks/remarks';
 import { connect } from 'react-redux';
 import * as actionTypes from '../../store/actions';
@@ -19,7 +19,7 @@ const Question = props => {
   const [answerDetails, setAnswerDetails] = useState('');
   const [alias, setAlias] = useState('');
   const [inputStyle, setInputStyle] = useState({ border: 'gray solid 1px' });
-  const [isCorrect, setIsCorrect] = useState(false);
+  // const [isCorrect, setIsCorrect] = useState(false);
 
 /*
 useEffect: equivalent to componentDidMount, componentDidUpdate and
@@ -36,75 +36,56 @@ there are changes in the array only and not in the component.
   }, []);
 
 /*
-If user's past data exist, it will be fetched from the back-end  
+If user's past data exist, it will be fetched from the back-end to display gameStats
 */
-  useEffect(() => {
+  useEffect( () => {
     if (alias) {
-      fetch(`http://localhost:8080/results/users/${alias}`)
-        .then(response => response.json())
-        .then(data => {
-          props.loadAttempts(data);
-        });
+      getUserResponse(alias).then(data => {
+        props.loadAttempts(data);
+      })
     }
   }, [alias, props]);
 
 /*
-if correct answer is entered into the system,
-the next question is generated and the component re-renders.
+When user clicks button submit
 */ 
   const handleAnswer = event => {
+
     const payLoad = {
       user: {
         name: alias
       },
+      question: question.question,
+      choices: question.choices1,
       answer: question.choices[parseInt(answer)],
-      quizId: question.id,
-      result: isCorrect
+     correctAnswer: parseInt(question.answer)
     };
-    //console.log('Payload', payLoad);
 
+
+     /*
+    Posting the user's response to the database 
+    */
+   postResult(payLoad);
+   
     if (alias) {
       setInputStyle({ border: 'gray solid 1px' });
       if (parseInt(answer) === parseInt(question.answer)) {
-        payLoad.result = true;
         setAnswerDetails('Your answer is correct');
         randomQuestion().then(response => {
           setQuestion(response);
         });
       } else {
+        randomQuestion().then(response => {
+          setQuestion(response);
+        });
         setAnswerDetails('The answer is wrong. Please try again.');
       }
     } else {
       setInputStyle({ border: 'red solid 1px' });
       setAnswerDetails('Name or Alias is needed. Please try again.');
     }
-
-  
-
       props.onAttempt(payLoad);
 
-
-
-   
-
-    /*
-    Posting the user's response to the database 
-    */ 
-    fetch("http://localhost:8080/results/", {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(payLoad)
-    })
-      .then(response => response.json()) // => problem causing inability to save data into database
-      .then(data => {
-      }).catch(err => {
-        console.log(err);
-      })
-
-   
-    
     event.preventDefault();
   };
 

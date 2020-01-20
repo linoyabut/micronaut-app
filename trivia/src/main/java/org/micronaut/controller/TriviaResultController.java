@@ -11,7 +11,6 @@ import org.micronaut.service.TriviaDateFormatter;
 import org.micronaut.service.TriviaResponseChecker;
 import org.micronaut.service.TriviaResultService;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -57,7 +56,7 @@ public class TriviaResultController {
 
 
     @Get(value = "/users/{name}", produces = MediaType.APPLICATION_JSON)
-    public ResultAttemptDTO getTrivia(@PathVariable String name) {
+    public List<ResultAttemptDTO> getTrivia(@PathVariable String name) {
         return triviaResultService.getResults(name);
     }
 }
