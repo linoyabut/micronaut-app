@@ -10,4 +10,6 @@ public interface TriviaDateFormatter {
     String dateFormat(LocalDateTime localDateTime);
 
     List<ResultAttemptDTO> resultAttemptDTOList(List<ResultAttempt> resultAttempts);
+
+     ResultAttemptDTO resultAttemptDTO(ResultAttempt resultAttempt);
 }

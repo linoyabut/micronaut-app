@@ -38,13 +38,13 @@ there are changes in the array only and not in the component.
 /*
 If user's past data exist, it will be fetched from the back-end to display gameStats
 */
-  useEffect( () => {
-    if (alias) {
-      getUserResponse(alias).then(data => {
-        props.loadAttempts(data);
-      })
-    }
-  }, [alias, props]);
+  // useEffect( () => {
+  //   if (alias) {
+  //     getUserResponse(alias).then(data => {
+  //       props.loadAttempts(data);
+  //     })
+  //   }
+  // }, [alias, props]);
 
 /*
 When user clicks button submit
@@ -63,9 +63,16 @@ When user clicks button submit
 
 
      /*
-    Posting the user's response to the database 
+    Posting the user's response to the database and getting the response 
     */
-   postResult(payLoad);
+     const result = postResult(payLoad);
+
+     result.then((data) => props.onAttempt(data));
+
+    //getUserResponse(alias).then((responses) => props.loadAttempts(responses));
+
+
+
    
     if (alias) {
       setInputStyle({ border: 'gray solid 1px' });
@@ -84,7 +91,6 @@ When user clicks button submit
       setInputStyle({ border: 'red solid 1px' });
       setAnswerDetails('Name or Alias is needed. Please try again.');
     }
-      props.onAttempt(payLoad);
 
     event.preventDefault();
   };

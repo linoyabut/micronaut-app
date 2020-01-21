@@ -1,7 +1,8 @@
 import * as actionTypes from './actions';
 
 const initialState = {
-  attemptList: []
+  attemptList: [],
+
 };
 
 const reducer = (state = initialState, action) => {
@@ -19,6 +20,7 @@ const reducer = (state = initialState, action) => {
         attemptList: action.payload
       };
     }
+    
     default:
       return state;
   }

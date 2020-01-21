@@ -24,19 +24,17 @@ const getGameStats = async userId => {
 };
 
 // submitting answer to back-end
-const postResult = payLoad => {
-  fetch("http://localhost:8080/results", {
+const postResult =  payLoad => {
+ return fetch("http://localhost:8080/results", {
     method: "POST",
     headers: {
       "Content-Type": "application/json"
     },
     body: JSON.stringify(payLoad)
   })
-    .then(response => response.json()) // => problem causing inability to save data into database
-    .then(data => {console.log(data)})
-    .catch(err => {
-      console.log(err);
-    });
+  .then((res) => res.json())
+  .then((data) => data)
+
 };
 
 // getting all the user's responses 
@@ -48,7 +46,6 @@ const getUserResponse = async name => {
 
 //getting all the user's highscores 
 const highScores = () => {
-    const scores = [];
  return fetch(`http://localhost:5000/scorecard/leaderboard`,
   {
     method: "GET",
@@ -60,14 +57,8 @@ const highScores = () => {
   )
    .then(response =>  response.json())
    .then(response => {
-    console.log(response + "data highscores")
-    // scores.push(data);
     return response;
        });
-
-  
- // console.log(scores + "scores array");
-  // return scores;
-}
+    }
 
 export { randomQuestion, getGameStats, postResult, getUserResponse, highScores };

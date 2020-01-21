@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import "./leaderboard.css";
 import {highScores} from "../../utils/service";
-/*
-Fake table that shows the leaderboard - sample 
-*/
 
+/*
+ leaderboard - UI
+*/
 const LeaderBoard = (props) => {
   const [scores, setScores] = useState([]);
 
@@ -15,7 +15,6 @@ const LeaderBoard = (props) => {
   let renderList = <span>Loading ... </span>;
   if (scores) {
     renderList = scores.map((item, index) => {
-      console.log(item.userId + "userId");
       return (
         <tr key={index}>
           <td>{item.userId}</td>
@@ -42,5 +41,6 @@ const LeaderBoard = (props) => {
     </div>
   );
 };
+
 
 export default LeaderBoard;

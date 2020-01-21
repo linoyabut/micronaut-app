@@ -37,4 +37,17 @@ public class TriviaDateFormatterImpl implements TriviaDateFormatter {
         return resultAttemptDTOS;
     }
 
+    @Override
+    public ResultAttemptDTO resultAttemptDTO(ResultAttempt resultAttempt) {
+
+            String date = dateFormat(resultAttempt.getLocalDateTime());
+
+            ResultAttemptDTO resultAttemptDTO = new ResultAttemptDTO(
+                    date, resultAttempt.getQuestion(), resultAttempt.getAnswer(),
+                    String.valueOf(resultAttempt.isCorrect())
+            );
+
+        return resultAttemptDTO;
+    }
+
 }

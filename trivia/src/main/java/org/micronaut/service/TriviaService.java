@@ -6,4 +6,6 @@ public interface TriviaService {
 
     Trivia getTrivia();
 
+    int generateAttemptId();
+
 }

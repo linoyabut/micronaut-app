@@ -4,7 +4,6 @@ import org.micronaut.domain.Trivia;
 import org.micronaut.repository.TriviaRepository;
 
 import javax.inject.Singleton;
-import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 
@@ -22,5 +21,15 @@ public class TriviaServiceImpl implements TriviaService {
     public Trivia getTrivia() {
         List<Trivia> triviaList = triviaRepository.findAll();
         return triviaList.get(new Random().nextInt(triviaList.size()));
+    }
+
+    @Override
+    public int generateAttemptId() {
+        Random random = new Random();
+
+        /* Create a random response Id */
+        int randomAttemptId = random.nextInt(30);
+
+        return randomAttemptId;
     }
 }

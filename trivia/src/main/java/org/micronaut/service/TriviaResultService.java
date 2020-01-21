@@ -9,6 +9,6 @@ public interface TriviaResultService {
 
     ResultAttempt postTriviaResults(ResultAttempt resultAttempt);
 
-    List<ResultAttemptDTO> getResults(String name);
+    List<ResultAttemptDTO> getResults(long userId);
 
 }
