@@ -4,9 +4,7 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.ToString;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.time.LocalDateTime;
 
 
@@ -16,15 +14,15 @@ import java.time.LocalDateTime;
 @Getter
 public final class ResultAttempt {
 
-   /* @ManyToOne(cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
+    @ManyToOne(cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
     @JoinColumn(name = "USER_ID")
-    private User user;*/
+    private User user;
 
     @Id
     @GeneratedValue
     private Long id;
 
-    private Long userId;
+   // private Long userId;
     private LocalDateTime localDateTime;
     private String question;
     private String answer;
@@ -32,13 +30,13 @@ public final class ResultAttempt {
     private boolean isCorrect;
 
 
-    public ResultAttempt(Long userId,
+    public ResultAttempt(User user,
                          LocalDateTime localDateTime,
                          String question,
                          String answer,
                          int attemptId,
                          boolean isCorrect) {
-        this.userId = userId;
+        this.user = user;
         this.localDateTime = localDateTime;
         this.question = question;
         this.answer = answer;
