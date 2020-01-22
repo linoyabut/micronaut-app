@@ -14,14 +14,6 @@ const randomQuestion = async () => {
   return newData;
 };
 
-// getting all the gamestats 
-const getGameStats = async userId => {
-  const gameStats = await fetch(
-    `http://localhost:5000/scorecard/gamestats/${userId}`
-  );
-
-  return gameStats;
-};
 
 // submitting answer to back-end
 const postResult =  payLoad => {
@@ -37,12 +29,12 @@ const postResult =  payLoad => {
 
 };
 
-// getting all the user's responses 
-const getUserResponse = async name => {
-  const responses = await fetch(`http://localhost:8080/results/users/${name}`);
-  return responses.json();
+// // getting all the user's responses 
+// const getUserResponse = async name => {
+//   const responses = await fetch(`http://localhost:8080/results/users/${name}`);
+//   return responses.json();
 
-};
+// };
 
 //getting all the user's highscores 
 const highScores = () => {
@@ -61,4 +53,41 @@ const highScores = () => {
        });
     }
 
-export { randomQuestion, getGameStats, postResult, getUserResponse, highScores };
+//getting a user's gamestats
+const getGameStats = async(userId) => {
+   const response = await fetch( `http://localhost:5000/scorecard/gamestats/${userId}`,
+   {
+     method: "GET",
+   headers: {
+     'Accept': 'application/json',
+     'Content-Type': 'application/json',
+   },
+ });
+    // .then(response =>  response.json())
+    // .then(response => {
+    //  return response;
+    //     });
+
+ const json = await response.json();
+
+return json;
+     }
+
+//getting a user's userId 
+const getUserId = (userId) => {
+  return fetch( `http://localhost:5000/scorecard/gamestats/${userId}`,
+   {
+     method: "GET",
+   headers: {
+     'Accept': 'application/json',
+     'Content-Type': 'application/json',
+   },
+ }
+   )
+    .then(response =>  response.json())
+    .then(response => {
+     return response;
+        });
+     }
+
+export { randomQuestion, getGameStats, postResult, highScores };

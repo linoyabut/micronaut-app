@@ -20,6 +20,15 @@ const reducer = (state = initialState, action) => {
         attemptList: action.payload
       };
     }
+
+    case actionTypes.GET_GAMESTATS: {
+      return {
+        ...state,
+        attemptList: action.payload
+      };
+    }
+
+
     
     default:
       return state;

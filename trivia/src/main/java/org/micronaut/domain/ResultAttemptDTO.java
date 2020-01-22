@@ -3,8 +3,6 @@ package org.micronaut.domain;
 import io.micronaut.core.annotation.Introspected;
 import lombok.*;
 
-import java.time.LocalDateTime;
-
 @RequiredArgsConstructor
 @AllArgsConstructor
 @Getter
@@ -12,6 +10,8 @@ import java.time.LocalDateTime;
 @EqualsAndHashCode
 @Introspected
 public class ResultAttemptDTO {
+
+    private long userId;
 
     private String localDateTime;
 

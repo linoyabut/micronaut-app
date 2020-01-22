@@ -27,6 +27,7 @@ public class TriviaDateFormatterImpl implements TriviaDateFormatter {
             String date = dateFormat(resultAttempt.getLocalDateTime());
 
             ResultAttemptDTO resultAttemptDTO = new ResultAttemptDTO(
+                    resultAttempt.getUserId(),
                     date, resultAttempt.getQuestion(), resultAttempt.getAnswer(),
                     String.valueOf(resultAttempt.isCorrect())
             );
@@ -43,6 +44,7 @@ public class TriviaDateFormatterImpl implements TriviaDateFormatter {
             String date = dateFormat(resultAttempt.getLocalDateTime());
 
             ResultAttemptDTO resultAttemptDTO = new ResultAttemptDTO(
+                    resultAttempt.getUserId(),
                     date, resultAttempt.getQuestion(), resultAttempt.getAnswer(),
                     String.valueOf(resultAttempt.isCorrect())
             );

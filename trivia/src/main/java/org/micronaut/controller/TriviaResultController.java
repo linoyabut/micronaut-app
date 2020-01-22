@@ -47,22 +47,23 @@ public class TriviaResultController {
 
     @Post(consumes = MediaType.APPLICATION_JSON, produces = MediaType.APPLICATION_JSON)
     public HttpResponse<ResultAttemptDTO> save(@Body Response response) {
-        //User user1 = new User();
+
+        User user1 = new User();
 
         /*Check if the user exists in the database by name, if exists, persist response to existing user*/
         Optional<User> user = userRepository.findByName(response.getUser().getName());
 
-     /*   if(user.isEmpty()) {
+        if (user.isEmpty()) {
             user1 = userRepository.save(response.getUser());
         } else {
             user1 = user.get();
-        }*/
+        }
 
         int isCorrect = triviaResponseChecker.checkResponse(response);
 
         /*Creates a new resultAttempt */
         ResultAttempt resultAttempt = new ResultAttempt(
-                user.orElse(response.getUser()),
+                user1.getId(),
                 LocalDateTime.now(),
                 response.getQuestion(),
                 response.getAnswer(),
@@ -71,7 +72,7 @@ public class TriviaResultController {
 
         ResultAttempt result = triviaResultService.postTriviaResults(resultAttempt);
 
-        gamificationClient.save(result.getUser().getId(), triviaService.generateAttemptId(), isCorrect);
+        gamificationClient.save(result.getUserId(), triviaService.generateAttemptId(), isCorrect);
 
         ResultAttemptDTO resultAttemptDTO = triviaDateFormatter.resultAttemptDTO(resultAttempt);
         return HttpResponse.ok(resultAttemptDTO);

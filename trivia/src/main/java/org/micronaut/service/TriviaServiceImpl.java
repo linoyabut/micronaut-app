@@ -17,6 +17,7 @@ public class TriviaServiceImpl implements TriviaService {
         this.triviaRepository = triviaRepository;
     }
 
+    // generate random questions, capture previous state
     @Override
     public Trivia getTrivia() {
         List<Trivia> triviaList = triviaRepository.findAll();

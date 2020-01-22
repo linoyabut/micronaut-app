@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './question.css';
-import {randomQuestion, postResult, getUserResponse} from '../../utils/service';
+import {randomQuestion, postResult,getGameStats} from '../../utils/service';
 import Remarks from '../remarks/remarks';
 import { connect } from 'react-redux';
 import * as actionTypes from '../../store/actions';
@@ -66,12 +66,16 @@ When user clicks button submit
     Posting the user's response to the database and getting the response 
     */
      const result = postResult(payLoad);
-
-     result.then((data) => props.onAttempt(data));
-
+     result.then((data) => {
+       console.log(data.userId);
+       props.onAttempt(data)
+      });
+     
+    
     //getUserResponse(alias).then((responses) => props.loadAttempts(responses));
 
-
+    // getting the game stats for the user 
+   // getGameStats(1).then((res) => console.log(res));
 
    
     if (alias) {
@@ -94,9 +98,6 @@ When user clicks button submit
 
     event.preventDefault();
   };
-
-  
-
 
   /*
   Capture the user's response when user chooses radio button's options 
@@ -167,6 +168,11 @@ const mapDispatchToProps = dispatch => {
       dispatch({
         type: actionTypes.SET_ATTEMPTS,
         payload: attempts
+      }),
+      loadGameStats: gamestats =>
+      dispatch({
+        type: actionTypes.GET_GAMESTATS,
+        payload: gamestats
       })
   };
 };
