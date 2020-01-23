@@ -67,15 +67,15 @@ When user clicks button submit
     */
      const result = postResult(payLoad);
      result.then((data) => {
-       console.log(data.userId);
        props.onAttempt(data)
+       props.getUserId(data.userId);
       });
      
     
     //getUserResponse(alias).then((responses) => props.loadAttempts(responses));
 
     // getting the game stats for the user 
-   // getGameStats(1).then((res) => console.log(res));
+    //getGameStats(1).then((res) => console.log(res));
 
    
     if (alias) {
@@ -169,10 +169,10 @@ const mapDispatchToProps = dispatch => {
         type: actionTypes.SET_ATTEMPTS,
         payload: attempts
       }),
-      loadGameStats: gamestats =>
+      getUserId: userId =>
       dispatch({
-        type: actionTypes.GET_GAMESTATS,
-        payload: gamestats
+        type: actionTypes.GET_USERID,
+        payload: userId
       })
   };
 };

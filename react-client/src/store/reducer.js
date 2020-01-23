@@ -2,6 +2,7 @@ import * as actionTypes from './actions';
 
 const initialState = {
   attemptList: [],
+  userId: 0
 
 };
 
@@ -21,10 +22,10 @@ const reducer = (state = initialState, action) => {
       };
     }
 
-    case actionTypes.GET_GAMESTATS: {
+    case actionTypes.GET_USERID: {
       return {
         ...state,
-        attemptList: action.payload
+        userId: action.payload
       };
     }
 

@@ -16,7 +16,7 @@ import java.time.LocalDateTime;
 @Getter
 public final class ResultAttempt {
 
-  /*  @ManyToOne(cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
+    /*@ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "USER_ID")
     private User user;*/
 

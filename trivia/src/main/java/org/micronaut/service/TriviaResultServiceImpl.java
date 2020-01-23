@@ -1,5 +1,6 @@
 package org.micronaut.service;
 
+import org.micronaut.Utils;
 import org.micronaut.domain.ResultAttempt;
 import org.micronaut.domain.ResultAttemptDTO;
 import org.micronaut.repository.TriviaResultRepository;
@@ -13,12 +14,8 @@ public class TriviaResultServiceImpl implements TriviaResultService {
 
     private TriviaResultRepository triviaResultRepository;
 
-    private TriviaDateFormatter triviaDateFormatter;
-
-    public TriviaResultServiceImpl(TriviaResultRepository triviaResultRepository
-            , TriviaDateFormatter triviaDateFormatter) {
+    public TriviaResultServiceImpl(TriviaResultRepository triviaResultRepository) {
         this.triviaResultRepository = triviaResultRepository;
-        this.triviaDateFormatter = triviaDateFormatter;
     }
 
     @Override
@@ -31,6 +28,8 @@ public class TriviaResultServiceImpl implements TriviaResultService {
 
         List<ResultAttempt> resultAttempts = triviaResultRepository.findByUserId(userId);
 
-        return triviaDateFormatter.resultAttemptDTOList(resultAttempts);
+        return Utils.resultAttemptDTOList(resultAttempts);
+
+        //triviaDateFormatter.resultAttemptDTOList(resultAttempts);
     }
 }

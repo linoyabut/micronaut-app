@@ -54,23 +54,20 @@ const highScores = () => {
     }
 
 //getting a user's gamestats
-const getGameStats = async(userId) => {
-   const response = await fetch( `http://localhost:5000/scorecard/gamestats/${userId}`,
+const getGameStats = (userId) => {
+   return fetch( `http://localhost:5000/scorecard/gamestats/${userId}`,
    {
      method: "GET",
    headers: {
      'Accept': 'application/json',
      'Content-Type': 'application/json',
    },
- });
-    // .then(response =>  response.json())
-    // .then(response => {
-    //  return response;
-    //     });
+ })
+    .then(response =>  response.json())
+    .then(response => {
+     return response;
+        });
 
- const json = await response.json();
-
-return json;
      }
 
 //getting a user's userId 

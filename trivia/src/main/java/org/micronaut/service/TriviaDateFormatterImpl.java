@@ -13,24 +13,19 @@ import java.util.List;
 public class TriviaDateFormatterImpl implements TriviaDateFormatter {
 
 
-
     @Override
     public String dateFormat(LocalDateTime localDateTime) {
         DateTimeFormatter df = DateTimeFormatter.ofPattern("dd-MM-yyyy");
-        return df.format(localDateTime).toString();
+        return df.format(localDateTime);
     }
 
     @Override
     public List<ResultAttemptDTO> resultAttemptDTOList(List<ResultAttempt> resultAttempts) {
         List<ResultAttemptDTO> resultAttemptDTOS = new LinkedList<>();
-        for(ResultAttempt resultAttempt: resultAttempts) {
+        for (ResultAttempt resultAttempt : resultAttempts) {
             String date = dateFormat(resultAttempt.getLocalDateTime());
 
-            ResultAttemptDTO resultAttemptDTO = new ResultAttemptDTO(
-                    resultAttempt.getUserId(),
-                    date, resultAttempt.getQuestion(), resultAttempt.getAnswer(),
-                    String.valueOf(resultAttempt.isCorrect())
-            );
+            ResultAttemptDTO resultAttemptDTO = new ResultAttemptDTO(resultAttempt.getId(), date, resultAttempt.getQuestion(), resultAttempt.getAnswer(), String.valueOf(resultAttempt.isCorrect()));
 
             resultAttemptDTOS.add(resultAttemptDTO);
         }
@@ -41,13 +36,9 @@ public class TriviaDateFormatterImpl implements TriviaDateFormatter {
     @Override
     public ResultAttemptDTO resultAttemptDTO(ResultAttempt resultAttempt) {
 
-            String date = dateFormat(resultAttempt.getLocalDateTime());
+        String date = dateFormat(resultAttempt.getLocalDateTime());
 
-            ResultAttemptDTO resultAttemptDTO = new ResultAttemptDTO(
-                    resultAttempt.getUserId(),
-                    date, resultAttempt.getQuestion(), resultAttempt.getAnswer(),
-                    String.valueOf(resultAttempt.isCorrect())
-            );
+        ResultAttemptDTO resultAttemptDTO = new ResultAttemptDTO(resultAttempt.getId(), date, resultAttempt.getQuestion(), resultAttempt.getAnswer(), String.valueOf(resultAttempt.isCorrect()));
 
         return resultAttemptDTO;
     }

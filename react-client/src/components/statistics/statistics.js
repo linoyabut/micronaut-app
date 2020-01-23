@@ -1,21 +1,37 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import "./statistics.css";
+import {getGameStats} from "../../utils/service";
+
 const Statistics = props => {
-  // console.log(props.attemptList);
+  const [gamestats, setGameStats] = useState({});
+
+  useEffect(() => {
+    if(props.userId)
+    getGameStats(props.userId).then(response => setGameStats(response));
+  }, [props.userId]);
+
+  // useEffect ( () => {
+  //   // if(props.userId) {
+  //   // // const timer = setInterval(() => getGameStats(props.userId).then(res => setGameStats(res)), 3000);
+
+  //   // // return () => clearInterval(timer);
+  //   // // }
+  // })
 
   let renderList = <span>Loading ... </span>;
-  if (!props.attemptList) {
-    renderList = props.attemptList.map((item, index) => {
+
+  if (gamestats) {
+    console.log(gamestats);
+    renderList = () => {
       return (
-        <tr key={index}>
-          <td>{item.localDateTime}</td>
-          <td>{item.question}</td>
-          <td>{item.answer}</td>
-          <td>{item.correctAnswer}</td>
+        <tr>
+          <td>"test"</td>
+          <td>"test"</td>
+          <td>"test"</td>
         </tr>
       );
-    });
+    };
   }
 
   return (
@@ -29,7 +45,14 @@ const Statistics = props => {
             <th style={{ width: "11%" }}>Badge</th>
           </tr>
         </thead>
-        <tbody>{renderList}</tbody>
+        <tbody>
+        <tr>
+            <td style={{ width: "8%" }}>{gamestats.userId}</td>
+            <td style={{ width: "11%" }}>{gamestats.score}</td>
+            <td style={{ width: "11%" }}>{gamestats.badge}</td>
+          </tr>
+
+        </tbody>
       </table>
     </div>
   );
@@ -37,7 +60,7 @@ const Statistics = props => {
 
 const mapStateToProps = state => {
   return {
-    attemptList: state.attemptList
+   userId: state.userId
   };
 };
 
