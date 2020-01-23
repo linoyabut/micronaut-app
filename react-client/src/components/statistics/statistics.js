@@ -1,38 +1,21 @@
 import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import "./statistics.css";
-import {getGameStats} from "../../utils/service";
+import { getGameStats } from "../../utils/service";
 
 const Statistics = props => {
   const [gamestats, setGameStats] = useState({});
 
   useEffect(() => {
-    if(props.userId)
-    getGameStats(props.userId).then(response => setGameStats(response));
-  }, [props.userId]);
-
-  // useEffect ( () => {
-  //   // if(props.userId) {
-  //   // // const timer = setInterval(() => getGameStats(props.userId).then(res => setGameStats(res)), 3000);
-
-  //   // // return () => clearInterval(timer);
-  //   // // }
-  // })
-
-  let renderList = <span>Loading ... </span>;
-
-  if (gamestats) {
-    console.log(gamestats);
-    renderList = () => {
-      return (
-        <tr>
-          <td>"test"</td>
-          <td>"test"</td>
-          <td>"test"</td>
-        </tr>
+    if (props.userId) {
+      const timer = setInterval(
+        () => getGameStats(props.userId).then(res => setGameStats(res)),
+        3000
       );
-    };
-  }
+
+      return () => clearInterval(timer);
+    }
+  });
 
   return (
     <div className="Statistics">
@@ -46,12 +29,11 @@ const Statistics = props => {
           </tr>
         </thead>
         <tbody>
-        <tr>
+          <tr>
             <td style={{ width: "8%" }}>{gamestats.userId}</td>
             <td style={{ width: "11%" }}>{gamestats.score}</td>
             <td style={{ width: "11%" }}>{gamestats.badge}</td>
           </tr>
-
         </tbody>
       </table>
     </div>
@@ -60,7 +42,7 @@ const Statistics = props => {
 
 const mapStateToProps = state => {
   return {
-   userId: state.userId
+    userId: state.userId
   };
 };
 

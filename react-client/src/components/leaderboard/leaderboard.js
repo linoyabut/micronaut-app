@@ -2,9 +2,6 @@ import React, { useState, useEffect } from 'react';
 import "./leaderboard.css";
 import {highScores} from "../../utils/service";
 
-/*
- leaderboard - UI
-*/
 const LeaderBoard = (props) => {
   const [scores, setScores] = useState([]);
 
