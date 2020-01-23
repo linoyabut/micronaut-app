@@ -1,12 +1,9 @@
 package org.micronaut.repository;
 
-import io.micronaut.data.annotation.Query;
 import io.micronaut.data.annotation.Repository;
 import io.micronaut.data.repository.CrudRepository;
-import org.micronaut.domain.LeaderBoard;
 import org.micronaut.domain.ScoreCard;
 
-import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.transaction.Transactional;
 import java.util.List;
@@ -16,7 +13,7 @@ Basic Crud Operations for Score Card.
 Finding the sum of the scores to get total score in score column.
 */
 @Repository
-    public abstract class ScoreCardRepository implements CrudRepository<ScoreCard, Long> {
+public abstract class ScoreCardRepository implements CrudRepository<ScoreCard, Long> {
 
     private final EntityManager entityManager;
 
@@ -30,7 +27,7 @@ Finding the sum of the scores to get total score in score column.
 
 
     // get total score of 1 user
-     public abstract int findSumScoreByUserId(long userId);
+    public abstract int findSumScoreByUserId(long userId);
 
     // get total count of attempts for 1 user
     public abstract int countByUserId(long userId);

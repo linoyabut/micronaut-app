@@ -33,13 +33,11 @@ public class CalculateBadgeServiceImpl implements CalculateBadgeService {
 
     @Override
     public Badge BadgeType(double scorePercentage) {
-        if(scorePercentage > 80) {
+        if (scorePercentage > 80) {
             return Badge.GOLD;
-        }
-        else if(scorePercentage <= 80 && scorePercentage >= 40) {
+        } else if (scorePercentage <= 80 && scorePercentage >= 40) {
             return Badge.SILVER;
-        }
-        else {
+        } else {
             return Badge.BRONZE;
         }
     }
