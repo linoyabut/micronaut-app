@@ -8,10 +8,6 @@ import javax.persistence.EntityManager;
 import javax.transaction.Transactional;
 import java.util.List;
 
-/*
-Basic Crud Operations for Score Card.
-Finding the sum of the scores to get total score in score column.
-*/
 @Repository
 public abstract class ScoreCardRepository implements CrudRepository<ScoreCard, Long> {
 
@@ -26,10 +22,9 @@ public abstract class ScoreCardRepository implements CrudRepository<ScoreCard, L
     }
 
 
-    // get total score of 1 user
     public abstract int findSumScoreByUserId(long userId);
 
-    // get total count of attempts for 1 user
+
     public abstract int countByUserId(long userId);
 
     @Transactional

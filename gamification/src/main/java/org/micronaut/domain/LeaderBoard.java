@@ -7,11 +7,6 @@ import lombok.Getter;
 import lombok.ToString;
 
 
-
-/*
-Used for displaying only the score for each user
-*/
-
 @AllArgsConstructor
 @Getter
 @ToString

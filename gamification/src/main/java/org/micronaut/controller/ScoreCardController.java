@@ -12,17 +12,21 @@ import org.micronaut.domain.ScoreCard;
 import org.micronaut.service.CalculateBadgeService;
 import org.micronaut.service.GameService;
 
-import javax.inject.Inject;
 import java.util.List;
 
 @Controller("/scorecard")
 @Validated
 public class ScoreCardController {
 
-    @Inject
-    CalculateBadgeService calculateBadgeService;
-    @Inject
+
+    private CalculateBadgeService calculateBadgeService;
+
     private GameService gameService;
+
+    public ScoreCardController(CalculateBadgeService calculateBadgeService, GameService gameService) {
+        this.calculateBadgeService = calculateBadgeService;
+        this.gameService = gameService;
+    }
 
     @Get(value = "allcards", produces = MediaType.APPLICATION_JSON)
     public List<ScoreCard> getAllScoreCard() {

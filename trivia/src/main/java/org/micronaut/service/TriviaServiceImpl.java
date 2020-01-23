@@ -8,7 +8,6 @@ import org.micronaut.repository.UserRepository;
 import javax.inject.Singleton;
 import java.util.List;
 import java.util.Optional;
-import java.util.Random;
 
 
 @Singleton
@@ -25,9 +24,10 @@ public class TriviaServiceImpl implements TriviaService {
 
     // generate random questions, capture previous state
     @Override
-    public Trivia getTrivia() {
+    public Trivia getTrivia(int count) {
         List<Trivia> triviaList = triviaRepository.findAll();
-        return triviaList.get(new Random().nextInt(triviaList.size()));
+        // return triviaList.get(new Random().nextInt(triviaList.size()));
+        return triviaList.get(count);
     }
 
     @Override

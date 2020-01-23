@@ -10,27 +10,22 @@ import org.micronaut.domain.Result;
 import org.micronaut.domain.ResultTrivia;
 import org.micronaut.service.ResultService;
 
-import javax.inject.Inject;
-
 
 @Controller("/results")
 @Validated
 public class ResultsController {
 
-    @Inject
-    ResultService resultService;
+    private ResultService resultService;
 
-    /*
-     * Persist results object to the back-end to compute score, create scorecard and create badge
-     * */
+    public ResultsController(ResultService resultService) {
+        this.resultService = resultService;
+    }
 
     @Post(consumes = MediaType.APPLICATION_JSON)
     public HttpResponse<Result> save(@Body ResultTrivia resultTrivia) {
         try {
-            Result result = new Result(
-                    resultTrivia.getUserId(), resultTrivia.getAttemptId(),
-                    resultTrivia.getIsCorrect() == 1
-            );
+            Result result = new Result(resultTrivia.getUserId(), resultTrivia.getAttemptId(),
+                    resultTrivia.getIsCorrect() == 1 ? true: false);
             resultService.createScoreCard(result);
             return HttpResponse.ok(result);
         } catch (Exception e) {

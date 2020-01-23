@@ -7,10 +7,6 @@ import lombok.Getter;
 import lombok.ToString;
 
 
-/*
-This Pojo gets the relevant data to calculate the score
-*/
-
 @AllArgsConstructor
 @ToString
 @EqualsAndHashCode

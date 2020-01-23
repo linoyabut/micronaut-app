@@ -3,10 +3,6 @@ package org.micronaut.domain;
 
 import lombok.*;
 
-/*
-Total score user has attained so far in the game. Domain used for displaying data
-*/
-
 
 @RequiredArgsConstructor
 @Getter

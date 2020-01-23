@@ -1,25 +1,26 @@
 package org.micronaut.service;
 
+import org.micronaut.Utils;
 import org.micronaut.domain.Badge;
 import org.micronaut.domain.GameStats;
 import org.micronaut.repository.ScoreCardRepository;
 
-import javax.inject.Inject;
 
-/*
-Compute the badge for the user based on scores
-*/
 public class CalculateBadgeServiceImpl implements CalculateBadgeService {
 
-    @Inject
+
     private ScoreCardRepository scoreCardRepository;
+
+    public CalculateBadgeServiceImpl(ScoreCardRepository scoreCardRepository) {
+        this.scoreCardRepository = scoreCardRepository;
+    }
 
     @Override
     public GameStats computeBatch(long userId) {
         int totalScoreUser = scoreCardRepository.findSumScoreByUserId(userId);
         int totalAttemptUser = scoreCardRepository.countByUserId(userId);
 
-        double scorePercentage = ((totalScoreUser * 100) / (totalAttemptUser * 10));
+        double scorePercentage = Utils.calculateScorePercentage(totalScoreUser, totalAttemptUser);
 
         Badge badge = BadgeType(scorePercentage);
 
