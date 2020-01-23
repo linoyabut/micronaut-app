@@ -22,9 +22,7 @@ public class DataLoader implements ApplicationEventListener<ServerStartupEvent> 
 
     @Override
     public void onApplicationEvent(ServerStartupEvent event) {
-        /*
-        Seeding the ScoreCard table so that can test the repo to see if getting scores possible
-        */
+
         if (scoreCardRepository.count() == 0) {
             ScoreCard scoreCard = new ScoreCard(1l, 1, 10);
 

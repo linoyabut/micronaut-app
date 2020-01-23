@@ -45,7 +45,7 @@ public class TriviaResultController {
                 response.getQuestion(),
                 response.getAnswer(),
                 Utils.generateAttemptId(),
-                isCorrect == 1);
+                isCorrect == 1 ? true: false);
 
         ResultAttempt result = triviaResultService.postTriviaResults(resultAttempt);
 

@@ -4,28 +4,24 @@ import org.micronaut.domain.LeaderBoard;
 import org.micronaut.domain.ScoreCard;
 import org.micronaut.repository.ScoreCardRepository;
 
-import javax.inject.Inject;
 import javax.inject.Singleton;
 import java.util.LinkedList;
 import java.util.List;
 
-/*
-Service layer for Score-Card
-*/
 @Singleton
 public class GameServiceImpl implements GameService {
 
-    @Inject
     private ScoreCardRepository scoreCardRepository;
+
+    public GameServiceImpl(ScoreCardRepository scoreCardRepository) {
+        this.scoreCardRepository = scoreCardRepository;
+    }
 
     @Override
     public List<ScoreCard> getAllScoreCards() {
         return (List) scoreCardRepository.findAll();
     }
 
-    /*
-     * Mapping the Object [], returned from database with userid and score to leaderboard obj
-     **/
     @Override
     public List<LeaderBoard> getAllLeaderBoardStats() {
         List<Object[]> leaderBoardResults = scoreCardRepository.findAllLeaders();

@@ -6,9 +6,6 @@ import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.ToString;
 
-/*
-Response POJO to map with Json submitted from ReactJs
-*/
 @RequiredArgsConstructor
 @Getter
 @ToString

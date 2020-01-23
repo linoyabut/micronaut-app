@@ -32,11 +32,7 @@ public final class ResultAttempt {
     private boolean isCorrect;
 
 
-    public ResultAttempt(Long userId,
-                         LocalDateTime localDateTime,
-                         String question,
-                         String answer,
-                         int attemptId,
+    public ResultAttempt(Long userId, LocalDateTime localDateTime, String question, String answer, int attemptId,
                          boolean isCorrect) {
         this.userId = userId;
         this.localDateTime = localDateTime;

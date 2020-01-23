@@ -4,12 +4,13 @@ import org.micronaut.domain.Result;
 import org.micronaut.domain.ScoreCard;
 import org.micronaut.repository.ScoreCardRepository;
 
-import javax.inject.Inject;
-
 public class ResultServiceImpl implements ResultService {
 
-    @Inject
     ScoreCardRepository scoreCardRepository;
+
+    public ResultServiceImpl(ScoreCardRepository scoreCardRepository) {
+        this.scoreCardRepository = scoreCardRepository;
+    }
 
 
     @Override

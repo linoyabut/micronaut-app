@@ -29,7 +29,5 @@ public class TriviaResultServiceImpl implements TriviaResultService {
         List<ResultAttempt> resultAttempts = triviaResultRepository.findByUserId(userId);
 
         return Utils.resultAttemptDTOList(resultAttempts);
-
-        //triviaDateFormatter.resultAttemptDTOList(resultAttempts);
     }
 }
