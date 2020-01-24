@@ -6,13 +6,8 @@ import org.micronaut.domain.BadgeCard;
 
 import java.util.List;
 
-/*
-CRUD operations for BatchCard
- */
+
 @Repository
 public interface BadgeCardRepository extends CrudRepository<BadgeCard, Long> {
-
     List<BadgeCard> findByUserId(Long userId);
-
-
 }

@@ -12,7 +12,6 @@ import java.util.List;
 public abstract class ScoreCardRepository implements CrudRepository<ScoreCard, Long> {
 
     private final EntityManager entityManager;
-
     private final String query = "SELECT s.userId, SUM(s.score) " +
             "FROM org.micronaut.domain.ScoreCard s " +
             "GROUP BY s.userId ORDER BY SUM(s.score) DESC";
@@ -21,11 +20,10 @@ public abstract class ScoreCardRepository implements CrudRepository<ScoreCard, L
         this.entityManager = entityManager;
     }
 
-
     public abstract int findSumScoreByUserId(long userId);
 
-
     public abstract int countByUserId(long userId);
+
 
     @Transactional
     public List<Object[]> findAllLeaders() {

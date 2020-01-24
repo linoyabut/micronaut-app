@@ -4,7 +4,7 @@ package org.micronaut.domain;
 import lombok.*;
 
 
-@RequiredArgsConstructor
+@AllArgsConstructor
 @Getter
 @Setter
 @ToString
