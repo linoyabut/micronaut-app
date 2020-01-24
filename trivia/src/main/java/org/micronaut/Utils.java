@@ -15,11 +15,6 @@ public final class Utils {
     private Utils() {
     }
 
-    public final static int checkResponse(Response response) {
-        String[] choiceArray = response.getChoices().split("\\|");
-        return choiceArray[response.getCorrectAnswer()].equals(response.getAnswer()) ? 1 : 0;
-    }
-
     public final static String dateFormat(LocalDateTime localDateTime) {
         DateTimeFormatter df = DateTimeFormatter.ofPattern("dd-MM-yyyy");
         return df.format(localDateTime);

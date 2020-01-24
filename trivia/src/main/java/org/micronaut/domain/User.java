@@ -1,10 +1,7 @@
 package org.micronaut.domain;
 
 
-import lombok.AllArgsConstructor;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.ToString;
+import lombok.*;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -16,6 +13,7 @@ import javax.persistence.Id;
 @ToString
 @EqualsAndHashCode
 @Entity
+@Setter
 public class User {
 
     private String name;
@@ -28,4 +26,5 @@ public class User {
     public User() {
         name = null;
     }
+
 }

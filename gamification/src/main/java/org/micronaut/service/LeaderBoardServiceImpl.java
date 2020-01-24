@@ -5,8 +5,8 @@ import org.micronaut.domain.ScoreCard;
 import org.micronaut.repository.ScoreCardRepository;
 
 import javax.inject.Singleton;
-import java.util.LinkedList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Singleton
 public class LeaderBoardServiceImpl implements LeaderBoardService {
@@ -17,6 +17,12 @@ public class LeaderBoardServiceImpl implements LeaderBoardService {
         this.scoreCardRepository = scoreCardRepository;
     }
 
+    private static LeaderBoard mapToLeaderBoard(Object[] obj) {
+        String uId = String.valueOf(obj[0]);
+        String ttlScore = String.valueOf(obj[1]);
+        return new LeaderBoard(uId, ttlScore);
+    }
+
     @Override
     public List<ScoreCard> getAllScoreCards() {
         return (List) scoreCardRepository.findAll();
@@ -25,19 +31,7 @@ public class LeaderBoardServiceImpl implements LeaderBoardService {
     @Override
     public List<LeaderBoard> getAllLeaderBoardStats() {
         List<Object[]> leaderBoardResults = scoreCardRepository.findAllLeaders();
-
-        List<LeaderBoard> leaderBoardList = new LinkedList<>();
-
-        for (Object[] obj : leaderBoardResults) {
-            Long userId = (Long) obj[0];
-            Long totalScore = (Long) obj[1];
-            String uId = String.valueOf(userId);
-            String ttlScore = String.valueOf(totalScore);
-            LeaderBoard leaderBoard = new LeaderBoard(uId, ttlScore);
-            leaderBoardList.add(leaderBoard);
-        }
-
-        return leaderBoardList;
+        return leaderBoardResults.stream().map(LeaderBoardServiceImpl::mapToLeaderBoard)
+                .collect(Collectors.toList());
     }
-
 }

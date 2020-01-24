@@ -2,6 +2,7 @@ package org.micronaut.domain;
 
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
+import lombok.Setter;
 import lombok.ToString;
 
 import javax.persistence.Entity;
@@ -14,6 +15,7 @@ import java.time.LocalDateTime;
 @EqualsAndHashCode
 @Entity
 @Getter
+@Setter
 public final class ResultAttempt {
 
     /*@ManyToOne(cascade = CascadeType.ALL)

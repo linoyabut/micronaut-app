@@ -9,6 +9,7 @@ import lombok.*;
 @ToString
 @EqualsAndHashCode
 @Introspected
+@Setter
 public class ResultAttemptDTO {
 
     private long userId;

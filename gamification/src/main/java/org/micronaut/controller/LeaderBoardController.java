@@ -43,7 +43,7 @@ public class LeaderBoardController {
     }
 
     // getting all the leaderboard
-    @Get(value = "scorecard/leaderboard", produces = MediaType.APPLICATION_JSON)
+    @Get(value = "/scorecard/leaderboard", produces = MediaType.APPLICATION_JSON)
     public List<LeaderBoard> leaderBoardScores() {
         return leaderBoardService.getAllLeaderBoardStats();
     }
