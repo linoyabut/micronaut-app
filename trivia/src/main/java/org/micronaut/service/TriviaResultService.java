@@ -12,10 +12,4 @@ public interface TriviaResultService {
 
     List<ResultAttemptDTO> getResults(long userId);
 
-    int checkResponse(Response response);
-
-    ResultAttemptDTO resultAttemptDTO(ResultAttempt resultAttempt);
-
-    List<ResultAttemptDTO> resultAttemptDTOList(List<ResultAttempt> resultAttempts);
-
 }

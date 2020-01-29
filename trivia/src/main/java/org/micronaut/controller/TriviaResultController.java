@@ -36,7 +36,7 @@ public class TriviaResultController {
 
         User user = triviaService.checkUser(response.getUser());
 
-        int isCorrect = triviaResultService.checkResponse(response);
+        int isCorrect =  Utils.checkResponse(response);
 
         /*Creates a new resultAttempt */
         ResultAttempt resultAttempt = new ResultAttempt(
@@ -49,9 +49,10 @@ public class TriviaResultController {
 
         ResultAttempt result = triviaResultService.postTriviaResults(resultAttempt);
 
-        gamificationClient.save(result.getUserId(), Utils.generateAttemptId(), isCorrect);
+        gamificationClient.save(user.getId(), Utils.generateAttemptId(), isCorrect);
 
-        ResultAttemptDTO resultAttemptDTO = triviaResultService.resultAttemptDTO(resultAttempt);
+        ResultAttemptDTO resultAttemptDTO = Utils.resultAttemptDTO(resultAttempt);
+
         return HttpResponse.ok(resultAttemptDTO);
     }
 

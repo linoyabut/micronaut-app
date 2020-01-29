@@ -57,5 +57,10 @@ public final class Utils {
 
         return randomAttemptId;
     }
+
+    public static int checkResponse(Response response) {
+        String[] choiceArray = response.getChoices().split("\\|");
+        return choiceArray[response.getCorrectAnswer()].equals(response.getAnswer()) ? 1 : 0;
+    }
 }
 
