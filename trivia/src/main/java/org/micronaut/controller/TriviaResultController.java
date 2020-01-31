@@ -45,15 +45,13 @@ public class TriviaResultController {
                 response.getQuestion(),
                 response.getAnswer(),
                 Utils.generateAttemptId(),
-                isCorrect == 1 ? true: false);
+                isCorrect == 1);
 
         ResultAttempt result = triviaResultService.postTriviaResults(resultAttempt);
 
-        gamificationClient.save(user.getId(), Utils.generateAttemptId(), isCorrect);
+        gamificationClient.save(result.getUserId(), Utils.generateAttemptId(), isCorrect);
 
-        ResultAttemptDTO resultAttemptDTO = Utils.resultAttemptDTO(resultAttempt);
-
-        return HttpResponse.ok(resultAttemptDTO);
+        return HttpResponse.ok(triviaResultService.createResultAttemptDTO(resultAttempt));
     }
 
 

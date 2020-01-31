@@ -1,16 +1,13 @@
 package org.micronaut.service;
 
+
 import org.micronaut.Utils;
-import org.micronaut.domain.Response;
 import org.micronaut.domain.ResultAttempt;
 import org.micronaut.domain.ResultAttemptDTO;
 import org.micronaut.repository.TriviaResultRepository;
 
 import javax.inject.Singleton;
-import java.util.LinkedList;
 import java.util.List;
-
-import static org.micronaut.Utils.dateFormat;
 
 
 @Singleton
@@ -31,5 +28,11 @@ public class TriviaResultServiceImpl implements TriviaResultService {
     public List<ResultAttemptDTO> getResults(long userId) {
 
         return Utils.resultAttemptDTOList(triviaResultRepository.findByUserId(userId));
+    }
+
+    @Override
+    public ResultAttemptDTO createResultAttemptDTO(ResultAttempt resultAttempt) {
+
+        return Utils.resultAttemptDTO(resultAttempt);
     }
 }

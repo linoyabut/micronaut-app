@@ -1,12 +1,10 @@
 package org.micronaut.domain;
 
 import io.micronaut.core.annotation.Introspected;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
+import lombok.*;
 
 @NoArgsConstructor
+@AllArgsConstructor
 @ToString
 @EqualsAndHashCode
 @Getter

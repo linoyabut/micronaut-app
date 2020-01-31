@@ -80,7 +80,10 @@ public class TriviaResultControllerTest {
         when(gamificationClient.save(anyLong(), anyInt(), anyInt()))
                 .thenReturn(result);
 
-        HttpResponse<ResultAttemptDTO> response = client.toBlocking().exchange(HttpRequest.POST("/results", response1));
+        when(triviaResultService.createResultAttemptDTO(any(ResultAttempt.class)))
+                .thenReturn(resultAttemptDTO);
+
+        HttpResponse<ResultAttemptDTO> response = client.toBlocking().exchange(HttpRequest.POST("/results", response1),ResultAttemptDTO.class);
 
         assertEquals(resultAttemptDTO, response.body());
         assertEquals(HttpStatus.OK, response.status());

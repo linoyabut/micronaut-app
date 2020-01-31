@@ -1,9 +1,6 @@
 package org.micronaut.service;
 
-import org.micronaut.domain.Badge;
-import org.micronaut.domain.GameStats;
-import org.micronaut.domain.Result;
-import org.micronaut.domain.ScoreCard;
+import org.micronaut.domain.*;
 import org.micronaut.repository.ScoreCardRepository;
 
 import javax.inject.Singleton;
@@ -41,6 +38,11 @@ public class GameServiceImpl implements GameService {
         } else {
             return Badge.BRONZE;
         }
+    }
+
+    @Override
+    public Result createNewResult(ResultTrivia resultTrivia) {
+        return new Result(resultTrivia.getUserId(), resultTrivia.getAttemptId(), resultTrivia.getIsCorrect() == 1 ? true : false);
     }
 
     private int calculateScore(boolean correct) {

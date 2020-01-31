@@ -12,4 +12,6 @@ public interface TriviaResultService {
 
     List<ResultAttemptDTO> getResults(long userId);
 
+    ResultAttemptDTO createResultAttemptDTO(ResultAttempt resultAttempt);
+
 }

@@ -37,7 +37,7 @@ public final class Utils {
         return resultAttemptDTOS;
     }
 
-    public final static ResultAttemptDTO resultAttemptDTO(ResultAttempt resultAttempt) {
+    public static ResultAttemptDTO resultAttemptDTO(ResultAttempt resultAttempt) {
 
         String date = dateFormat(resultAttempt.getLocalDateTime());
 

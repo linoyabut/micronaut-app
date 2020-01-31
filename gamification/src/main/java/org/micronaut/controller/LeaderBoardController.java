@@ -33,14 +33,9 @@ public class LeaderBoardController {
     // getting the results from Trivia app
     @Post(value = "/results", consumes = MediaType.APPLICATION_JSON)
     public HttpResponse<Result> save(@Body ResultTrivia resultTrivia) {
-        try {
-            Result result = new Result(resultTrivia.getUserId(), resultTrivia.getAttemptId(),
-                    resultTrivia.getIsCorrect() == 1 ? true: false);
-            gameService.newAttemptForUser(result);
+           Result result = gameService.createNewResult(resultTrivia);
+           gameService.newAttemptForUser(result);
             return HttpResponse.ok(result);
-        } catch (Exception e) {
-            return HttpResponse.badRequest();
-        }
     }
 
     // getting all the leaderboard
