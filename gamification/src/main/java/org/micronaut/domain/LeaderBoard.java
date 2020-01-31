@@ -1,16 +1,14 @@
 package org.micronaut.domain;
 
 
-import lombok.AllArgsConstructor;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.ToString;
+import lombok.*;
 
 
 @AllArgsConstructor
 @Getter
 @ToString
 @EqualsAndHashCode
+@NoArgsConstructor
 public class LeaderBoard {
 
     private String userId;

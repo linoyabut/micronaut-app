@@ -9,6 +9,7 @@ import lombok.*;
 @Setter
 @ToString
 @EqualsAndHashCode
+@NoArgsConstructor
 public class GameStats {
     private Long userId;
     private int score;

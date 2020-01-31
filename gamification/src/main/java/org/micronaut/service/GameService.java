@@ -2,9 +2,10 @@ package org.micronaut.service;
 
 import org.micronaut.domain.GameStats;
 import org.micronaut.domain.Result;
+import org.micronaut.domain.ScoreCard;
 
 public interface GameService {
     GameStats computeBatch(long userId);
 
-    void newAttemptForUser(Result result);
+    ScoreCard newAttemptForUser(Result result);
 }

@@ -21,6 +21,7 @@ import java.time.LocalDateTime;
 import java.util.Arrays;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.ArgumentMatchers.*;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
@@ -73,24 +74,16 @@ public class TriviaResultControllerTest {
 
         when(triviaService.checkUser(user)).thenReturn(user);
 
-        when(triviaResultService.postTriviaResults(resultAttempt))
+        when(triviaResultService.postTriviaResults(any(ResultAttempt.class)))
                 .thenReturn(resultAttempt);
 
-        when(gamificationClient.save(resultAttempt.getUserId(), resultAttempt.getAttemptId(), 1))
+        when(gamificationClient.save(anyLong(), anyInt(), anyInt()))
                 .thenReturn(result);
 
-        HttpResponse<ResultAttemptDTO> response = client.toBlocking().exchange(HttpRequest.POST("results", response1));
+        HttpResponse<ResultAttemptDTO> response = client.toBlocking().exchange(HttpRequest.POST("/results", response1));
 
-        /*
-        only this method works in getting the response object. Above code returns null body
-        */
-        //HttpResponse<ResultAttemptDTO> response = trivialResultController.save(response1);
-
-        System.out.println(response.body());
-
-        assertEquals(response.body(), resultAttemptDTO);
-        assertEquals(response.status(), HttpStatus.OK);
-
+        assertEquals(resultAttemptDTO, response.body());
+        assertEquals(HttpStatus.OK, response.status());
     }
 
     @Test

@@ -29,10 +29,8 @@ public class GameServiceImpl implements GameService {
     }
 
     @Override
-    public void newAttemptForUser(Result result) {
-        int score = calculateScore(result.isCorrect());
-        ScoreCard scoreCard = new ScoreCard(result.getUserId(), result.getAttemptId(), score);
-        scoreCardRepository.save(scoreCard);
+    public ScoreCard newAttemptForUser(Result result) {
+        return scoreCardRepository.save(new ScoreCard(result.getUserId(), result.getAttemptId(), calculateScore(result.isCorrect())));
     }
 
     private Badge BadgeType(double scorePercentage) {
